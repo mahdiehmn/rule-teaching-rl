@@ -1,0 +1,40 @@
+\paragraph{Bank--online AUC comparisons through 5M.}
+Table~\ref{tab:bank_online_advisors} compares mean sampled success at
+4,999,168 transitions and mean AUC over the common recorded interval
+204,800--4,999,168. Each seed's AUC is normalized by that interval.
+The bank uses ten training seeds and each online advisor uses five.
+Online advisors have a 120-request cap and retain their original 10M
+advice schedule when reporting the first 5M; the bank's schedule uses
+5M. Initial advice coefficients are 0.1 for the bank and 1.0 for online
+advisors. The differences therefore summarize the respective study
+configurations. Intervals below are unadjusted 95\% Welch intervals for
+differences between independent training-seed means; these cohorts are
+not treated as paired. No cross-study significance tests are reported.
+
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\caption{Mean bank-minus-baseline AUC differences through 5M,
+with unadjusted 95\% confidence intervals.}
+\label{tab:bank_online_auc_intervals}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Baseline & PPO & Count-PPO \\
+\midrule
+\multicolumn{3}{@{}l}{\emph{DoorKey}} \\
+Entropy & $+0.988\;[0.973,1.002]$ & $+0.090\;[-0.037,0.216]$ \\
+Mistake & $+0.969\;[0.913,1.025]$ & $+0.210\;[-0.100,0.520]$ \\
+Random & $+0.982\;[0.970,0.995]$ & $+0.342\;[-0.143,0.827]$ \\
+\addlinespace[2pt]
+\multicolumn{3}{@{}l}{\emph{MultiRoom}} \\
+Entropy & $+0.976\;[0.967,0.985]$ & $+0.139\;[-0.200,0.478]$ \\
+Mistake & $+0.976\;[0.967,0.985]$ & $+0.092\;[-0.093,0.277]$ \\
+Random & $+0.976\;[0.967,0.985]$ & $+0.082\;[-0.027,0.190]$ \\
+\addlinespace[2pt]
+\multicolumn{3}{@{}l}{\emph{KeyCorridor}} \\
+Entropy & $+0.819\;[0.749,0.890]$ & $+0.056\;[0.001,0.111]$ \\
+Mistake & $+0.819\;[0.749,0.890]$ & $+0.024\;[0.007,0.042]$ \\
+Random & $+0.819\;[0.749,0.890]$ & $+0.240\;[-0.288,0.767]$ \\
+\bottomrule
+\end{tabular}
+\end{table}

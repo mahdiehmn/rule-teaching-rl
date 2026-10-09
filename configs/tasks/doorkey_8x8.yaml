@@ -1,0 +1,15 @@
+# The headline Stage-1 task: find the key, unlock the door, reach
+# the goal, on an 8x8 map with procedural placement.
+task: doorkey_8x8
+gym_id: MiniGrid-DoorKey-8x8-v0
+
+# The budget every reported Stage-1 number was measured at. Keep it
+# here explicitly, because the interesting claims about this task are
+# all budget-relative: published results put vanilla PPO around 0.22
+# episodic return at 1M steps and an intrinsic-reward method (RE3) at
+# ~0.95 at the same 1M, whereas this repo's oracle distillation
+# reaches 0.94 at 2M. Comparing across different budgets is the
+# single easiest way to overstate what the teacher contributed.
+total_timesteps: 2_000_000
+
+success_threshold: 0.8

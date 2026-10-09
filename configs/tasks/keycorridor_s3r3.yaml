@@ -1,0 +1,17 @@
+# Small, fast member of the KeyCorridor family (7x7 map, 270-step
+# limit): the same hidden-key / locked-door / ball-behind-it
+# structure as S6R3 with ~4x shorter episodes. BabyAI-registered so
+# the free BabyAIBot teacher can plan on it.
+task: keycorridor_s3r3
+gym_id: BabyAI-KeyCorridorS3R3-v0
+
+# This is the diagnostic level for the teacher-free baselines,
+# because the literature is unambiguous about it: RND, RIDE, ICM,
+# AMIGo, IMPALA and NovelD ALL solve KeyCorridorS3R3. This repo's
+# RND scored 0.00 here at 2M frames, which is a statement about that
+# baseline's budget and configuration, not about the task. Any claim
+# that "no teacher-free method reaches KeyCorridor" has to survive
+# this level first.
+total_timesteps: 10_000_000
+
+success_threshold: 0.8

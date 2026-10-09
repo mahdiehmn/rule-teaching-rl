@@ -1,0 +1,624 @@
+{
+ "created": "2026-09-29T08:01:04.220581+00:00",
+ "model": "gpt-5-mini-2025-08-07",
+ "samples_per_task": 5,
+ "schema": {
+  "type": "object",
+  "properties": {
+   "plan": {
+    "type": "array",
+    "minItems": 1,
+    "maxItems": 8,
+    "items": {
+     "type": "object",
+     "properties": {
+      "target": {
+       "type": "string",
+       "enum": [
+        "key",
+        "locked_door",
+        "next_room_door",
+        "ball",
+        "goal",
+        "box"
+       ]
+      },
+      "done_when": {
+       "type": "string",
+       "enum": [
+        "carrying_key",
+        "door_unlocked",
+        "entered_next_room",
+        "task_complete"
+       ]
+      },
+      "repeat": {
+       "type": "string",
+       "enum": [
+        "once",
+        "each_room_before_the_goal_room"
+       ]
+      }
+     },
+     "required": [
+      "target",
+      "done_when",
+      "repeat"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "rationale": {
+    "type": "string"
+   }
+  },
+  "required": [
+   "plan",
+   "rationale"
+  ],
+  "additionalProperties": false
+ },
+ "bound_usd": 0.1265,
+ "tasks": {
+  "doorkey_8x8": {
+   "prompt": "PROMPT VERSION: stage_plan_v1\nYou are the TEACHER for a reinforcement-learning student. Write the ordered SUBGOAL PLAN the student should follow to accomplish the mission. During training the student is rewarded for progress through your plan: for each step, getting closer to its target, and completing it.\n\nTASK. DoorKey-8x8. An 8x8 grid is split by a wall into two rooms. The agent starts in one room. The only passage between the rooms is a locked door. The green goal square is in the other room. Mission text: 'use the key to open the door and then get to the goal'. The episode succeeds when the agent reaches the goal.\n\nMECHANICS. The world is a MiniGrid grid. The agent moves with actions turn left, turn right, move forward, pick up, drop and toggle. Toggle opens or closes the door in front of the agent; a LOCKED door opens only if the agent is carrying a key of the same colour. The agent can carry one object at a time. Walls and closed doors block movement.\n\nVOCABULARY. Each step has:\n- target: key (the key that opens the locked door), locked_door, next_room_door (the door leading out of the current room toward the goal), ball, goal (the green goal square), box\n- done_when: carrying_key (the agent holds the key), door_unlocked (the target door has been unlocked), entered_next_room (the agent has passed into the next room), task_complete (the mission is accomplished and the episode ends)\n- repeat: once, or each_room_before_the_goal_room (repeat the step for every room until the room that contains the goal)\n\nUse only these options, in the order the student should follow them, with as few steps as the mission needs. Give a one-sentence rationale.",
+   "prompt_sha256": "7814242fc99010254d7c1f773e421b8beb720b6c6d2a9a3aa2a6eaa0ce01ed2b",
+   "reference": [
+    [
+     "key",
+     "carrying_key",
+     "once"
+    ],
+    [
+     "locked_door",
+     "door_unlocked",
+     "once"
+    ],
+    [
+     "goal",
+     "task_complete",
+     "once"
+    ]
+   ],
+   "samples": [
+    {
+     "sample": 0,
+     "status": "completed",
+     "service_tier": "default",
+     "response_model": "gpt-5-mini-2025-08-07",
+     "tokens_in": 497,
+     "tokens_out": 215,
+     "usd": 0.000554,
+     "raw": "{\"plan\":[{\"target\":\"key\",\"done_when\":\"carrying_key\",\"repeat\":\"once\"},{\"target\":\"locked_door\",\"done_when\":\"door_unlocked\",\"repeat\":\"once\"},{\"target\":\"next_room_door\",\"done_when\":\"entered_next_room\",\"repeat\":\"once\"},{\"target\":\"goal\",\"done_when\":\"task_complete\",\"repeat\":\"once\"}],\"rationale\":\"Pick up the key, use it to unlock the locked door, pass through into the room with the goal, and then reach the goal to complete the mission.\"}",
+     "plan": [
+      {
+       "target": "key",
+       "done_when": "carrying_key",
+       "repeat": "once"
+      },
+      {
+       "target": "locked_door",
+       "done_when": "door_unlocked",
+       "repeat": "once"
+      },
+      {
+       "target": "next_room_door",
+       "done_when": "entered_next_room",
+       "repeat": "once"
+      },
+      {
+       "target": "goal",
+       "done_when": "task_complete",
+       "repeat": "once"
+      }
+     ],
+     "rationale": "Pick up the key, use it to unlock the locked door, pass through into the room with the goal, and then reach the goal to complete the mission.",
+     "matches_reference": false,
+     "seconds": 4.34
+    },
+    {
+     "sample": 1,
+     "status": "completed",
+     "service_tier": "default",
+     "response_model": "gpt-5-mini-2025-08-07",
+     "tokens_in": 497,
+     "tokens_out": 303,
+     "usd": 0.00073,
+     "raw": "{\"plan\":[{\"target\":\"key\",\"done_when\":\"carrying_key\",\"repeat\":\"once\"},{\"target\":\"locked_door\",\"done_when\":\"door_unlocked\",\"repeat\":\"once\"},{\"target\":\"next_room_door\",\"done_when\":\"entered_next_room\",\"repeat\":\"once\"},{\"target\":\"goal\",\"done_when\":\"task_complete\",\"repeat\":\"once\"}],\"rationale\":\"Pick up the key, use it to unlock the locked door, go through that door into the room with the goal, and then move to the goal to finish the mission.\"}",
+     "plan": [
+      {
+       "target": "key",
+       "done_when": "carrying_key",
+       "repeat": "once"
+      },
+      {
+       "target": "locked_door",
+       "done_when": "door_unlocked",
+       "repeat": "once"
+      },
+      {
+       "target": "next_room_door",
+       "done_when": "entered_next_room",
+       "repeat": "once"
+      },
+      {
+       "target": "goal",
+       "done_when": "task_complete",
+       "repeat": "once"
+      }
+     ],
+     "rationale": "Pick up the key, use it to unlock the locked door, go through that door into the room with the goal, and then move to the goal to finish the mission.",
+     "matches_reference": false,
+     "seconds": 3.39
+    },
+    {
+     "sample": 2,
+     "status": "completed",
+     "service_tier": "default",
+     "response_model": "gpt-5-mini-2025-08-07",
+     "tokens_in": 497,
+     "tokens_out": 270,
+     "usd": 0.000664,
+     "raw": "{\"plan\":[{\"target\":\"key\",\"done_when\":\"carrying_key\",\"repeat\":\"once\"},{\"target\":\"locked_door\",\"done_when\":\"door_unlocked\",\"repeat\":\"once\"},{\"target\":\"next_room_door\",\"done_when\":\"entered_next_room\",\"repeat\":\"once\"},{\"target\":\"goal\",\"done_when\":\"task_complete\",\"repeat\":\"once\"}],\"rationale\":\"Pick up the key, use it to unlock the locked door, go through the door into the room with the goal, and then move to the goal to finish the task.\"}",
+     "plan": [
+      {
+       "target": "key",
+       "done_when": "carrying_key",
+       "repeat": "once"
+      },
+      {
+       "target": "locked_door",
+       "done_when": "door_unlocked",
+       "repeat": "once"
+      },
+      {
+       "target": "next_room_door",
+       "done_when": "entered_next_room",
+       "repeat": "once"
+      },
+      {
+       "target": "goal",
+       "done_when": "task_complete",
+       "repeat": "once"
+      }
+     ],
+     "rationale": "Pick up the key, use it to unlock the locked door, go through the door into the room with the goal, and then move to the goal to finish the task.",
+     "matches_reference": false,
+     "seconds": 2.85
+    },
+    {
+     "sample": 3,
+     "status": "completed",
+     "service_tier": "default",
+     "response_model": "gpt-5-mini-2025-08-07",
+     "tokens_in": 497,
+     "tokens_out": 296,
+     "usd": 0.000716,
+     "raw": "{\"plan\":[{\"target\":\"key\",\"done_when\":\"carrying_key\",\"repeat\":\"once\"},{\"target\":\"locked_door\",\"done_when\":\"door_unlocked\",\"repeat\":\"once\"},{\"target\":\"next_room_door\",\"done_when\":\"entered_next_room\",\"repeat\":\"once\"},{\"target\":\"goal\",\"done_when\":\"task_complete\",\"repeat\":\"once\"}],\"rationale\":\"Pick up the key, use it to unlock the locked door, pass through into the room with the goal, and then move to the goal to finish the mission.\"}",
+     "plan": [
+      {
+       "target": "key",
+       "done_when": "carrying_key",
+       "repeat": "once"
+      },
+      {
+       "target": "locked_door",
+       "done_when": "door_unlocked",
+       "repeat": "once"
+      },
+      {
+       "target": "next_room_door",
+       "done_when": "entered_next_room",
+       "repeat": "once"
+      },
+      {
+       "target": "goal",
+       "done_when": "task_complete",
+       "repeat": "once"
+      }
+     ],
+     "rationale": "Pick up the key, use it to unlock the locked door, pass through into the room with the goal, and then move to the goal to finish the mission.",
+     "matches_reference": false,
+     "seconds": 3.11
+    },
+    {
+     "sample": 4,
+     "status": "completed",
+     "service_tier": "default",
+     "response_model": "gpt-5-mini-2025-08-07",
+     "tokens_in": 497,
+     "tokens_out": 247,
+     "usd": 0.000618,
+     "raw": "{\"plan\":[{\"target\":\"key\",\"done_when\":\"carrying_key\",\"repeat\":\"once\"},{\"target\":\"locked_door\",\"done_when\":\"door_unlocked\",\"repeat\":\"once\"},{\"target\":\"next_room_door\",\"done_when\":\"entered_next_room\",\"repeat\":\"once\"},{\"target\":\"goal\",\"done_when\":\"task_complete\",\"repeat\":\"once\"}],\"rationale\":\"First pick up the key, use it to unlock the locked door, pass through into the room with the goal, and then reach the goal to complete the task.\"}",
+     "plan": [
+      {
+       "target": "key",
+       "done_when": "carrying_key",
+       "repeat": "once"
+      },
+      {
+       "target": "locked_door",
+       "done_when": "door_unlocked",
+       "repeat": "once"
+      },
+      {
+       "target": "next_room_door",
+       "done_when": "entered_next_room",
+       "repeat": "once"
+      },
+      {
+       "target": "goal",
+       "done_when": "task_complete",
+       "repeat": "once"
+      }
+     ],
+     "rationale": "First pick up the key, use it to unlock the locked door, pass through into the room with the goal, and then reach the goal to complete the task.",
+     "matches_reference": false,
+     "seconds": 2.82
+    }
+   ]
+  },
+  "keycorridor_s3r3": {
+   "prompt": "PROMPT VERSION: stage_plan_v1\nYou are the TEACHER for a reinforcement-learning student. Write the ordered SUBGOAL PLAN the student should follow to accomplish the mission. During training the student is rewarded for progress through your plan: for each step, getting closer to its target, and completing it.\n\nTASK. KeyCorridor-S3R3. A corridor runs through the map with small rooms on its sides, each behind a door. The ball is inside a room whose door is locked. The key for that door lies in one of the other rooms. Mission text: 'pick up the <colour> ball'. The episode succeeds when the agent picks up the ball.\n\nMECHANICS. The world is a MiniGrid grid. The agent moves with actions turn left, turn right, move forward, pick up, drop and toggle. Toggle opens or closes the door in front of the agent; a LOCKED door opens only if the agent is carrying a key of the same colour. The agent can carry one object at a time. Walls and closed doors block movement.\n\nVOCABULARY. Each step has:\n- target: key (the key that opens the locked door), locked_door, next_room_door (the door leading out of the current room toward the goal), ball, goal (the green goal square), box\n- done_when: carrying_key (the agent holds the key), door_unlocked (the target door has been unlocked), entered_next_room (the agent has passed into the next room), task_complete (the mission is accomplished and the episode ends)\n- repeat: once, or each_room_before_the_goal_room (repeat the step for every room until the room that contains the goal)\n\nUse only these options, in the order the student should follow them, with as few steps as the mission needs. Give a one-sentence rationale.",
+   "prompt_sha256": "48b3dd33d0ee796e878670ca795607a861d941b8b588df87ddc3c601f55f2b3d",
+   "reference": [
+    [
+     "key",
+     "carrying_key",
+     "once"
+    ],
+    [
+     "locked_door",
+     "door_unlocked",
+     "once"
+    ],
+    [
+     "ball",
+     "task_complete",
+     "once"
+    ]
+   ],
+   "samples": [
+    {
+     "sample": 0,
+     "status": "completed",
+     "service_tier": "default",
+     "response_model": "gpt-5-mini-2025-08-07",
+     "tokens_in": 492,
+     "tokens_out": 319,
+     "usd": 0.000761,
+     "raw": "{\"plan\":[{\"target\":\"key\",\"done_when\":\"carrying_key\",\"repeat\":\"each_room_before_the_goal_room\"},{\"target\":\"locked_door\",\"done_when\":\"door_unlocked\",\"repeat\":\"once\"},{\"target\":\"next_room_door\",\"done_when\":\"entered_next_room\",\"repeat\":\"once\"},{\"target\":\"ball\",\"done_when\":\"task_complete\",\"repeat\":\"once\"}],\"rationale\":\"Search each side room until you pick up the key, use it to unlock the locked door, enter the goal room, and pick up the ball to complete the task.\"}",
+     "plan": [
+      {
+       "target": "key",
+       "done_when": "carrying_key",
+       "repeat": "each_room_before_the_goal_room"
+      },
+      {
+       "target": "locked_door",
+       "done_when": "door_unlocked",
+       "repeat": "once"
+      },
+      {
+       "target": "next_room_door",
+       "done_when": "entered_next_room",
+       "repeat": "once"
+      },
+      {
+       "target": "ball",
+       "done_when": "task_complete",
+       "repeat": "once"
+      }
+     ],
+     "rationale": "Search each side room until you pick up the key, use it to unlock the locked door, enter the goal room, and pick up the ball to complete the task.",
+     "matches_reference": false,
+     "seconds": 3.15
+    },
+    {
+     "sample": 1,
+     "status": "completed",
+     "service_tier": "default",
+     "response_model": "gpt-5-mini-2025-08-07",
+     "tokens_in": 492,
+     "tokens_out": 696,
+     "usd": 0.001515,
+     "raw": "{\"plan\":[{\"target\":\"next_room_door\",\"done_when\":\"entered_next_room\",\"repeat\":\"each_room_before_the_goal_room\"},{\"target\":\"key\",\"done_when\":\"carrying_key\",\"repeat\":\"each_room_before_the_goal_room\"},{\"target\":\"locked_door\",\"done_when\":\"door_unlocked\",\"repeat\":\"once\"},{\"target\":\"next_room_door\",\"done_when\":\"entered_next_room\",\"repeat\":\"once\"},{\"target\":\"ball\",\"done_when\":\"task_complete\",\"repeat\":\"once\"}],\"rationale\":\"Search each side room in order until you pick up the key, then unlock and enter the locked room containing the ball and pick it up to complete the task.\"}",
+     "plan": [
+      {
+       "target": "next_room_door",
+       "done_when": "entered_next_room",
+       "repeat": "each_room_before_the_goal_room"
+      },
+      {
+       "target": "key",
+       "done_when": "carrying_key",
+       "repeat": "each_room_before_the_goal_room"
+      },
+      {
+       "target": "locked_door",
+       "done_when": "door_unlocked",
+       "repeat": "once"
+      },
+      {
+       "target": "next_room_door",
+       "done_when": "entered_next_room",
+       "repeat": "once"
+      },
+      {
+       "target": "ball",
+       "done_when": "task_complete",
+       "repeat": "once"
+      }
+     ],
+     "rationale": "Search each side room in order until you pick up the key, then unlock and enter the locked room containing the ball and pick it up to complete the task.",
+     "matches_reference": false,
+     "seconds": 6.73
+    },
+    {
+     "sample": 2,
+     "status": "completed",
+     "service_tier": "default",
+     "response_model": "gpt-5-mini-2025-08-07",
+     "tokens_in": 492,
+     "tokens_out": 435,
+     "usd": 0.000993,
+     "raw": "{\n  \"plan\": [\n    {\n      \"target\": \"key\",\n      \"done_when\": \"carrying_key\",\n      \"repeat\": \"each_room_before_the_goal_room\"\n    },\n    {\n      \"target\": \"locked_door\",\n      \"done_when\": \"door_unlocked\",\n      \"repeat\": \"once\"\n    },\n    {\n      \"target\": \"next_room_door\",\n      \"done_when\": \"entered_next_room\",\n      \"repeat\": \"once\"\n    },\n    {\n      \"target\": \"ball\",\n      \"done_when\": \"task_complete\",\n      \"repeat\": \"once\"\n    }\n  ],\n  \"rationale\": \"Search rooms until you pick up the correct key, use it to unlock the locked door, enter the ball's room, and pick up the ball to finish the task.\"\n}",
+     "plan": [
+      {
+       "target": "key",
+       "done_when": "carrying_key",
+       "repeat": "each_room_before_the_goal_room"
+      },
+      {
+       "target": "locked_door",
+       "done_when": "door_unlocked",
+       "repeat": "once"
+      },
+      {
+       "target": "next_room_door",
+       "done_when": "entered_next_room",
+       "repeat": "once"
+      },
+      {
+       "target": "ball",
+       "done_when": "task_complete",
+       "repeat": "once"
+      }
+     ],
+     "rationale": "Search rooms until you pick up the correct key, use it to unlock the locked door, enter the ball's room, and pick up the ball to finish the task.",
+     "matches_reference": false,
+     "seconds": 4.59
+    },
+    {
+     "sample": 3,
+     "status": "completed",
+     "service_tier": "default",
+     "response_model": "gpt-5-mini-2025-08-07",
+     "tokens_in": 492,
+     "tokens_out": 427,
+     "usd": 0.000977,
+     "raw": "{\n  \"plan\": [\n    {\n      \"target\": \"key\",\n      \"done_when\": \"carrying_key\",\n      \"repeat\": \"each_room_before_the_goal_room\"\n    },\n    {\n      \"target\": \"locked_door\",\n      \"done_when\": \"door_unlocked\",\n      \"repeat\": \"once\"\n    },\n    {\n      \"target\": \"next_room_door\",\n      \"done_when\": \"entered_next_room\",\n      \"repeat\": \"once\"\n    },\n    {\n      \"target\": \"ball\",\n      \"done_when\": \"task_complete\",\n      \"repeat\": \"once\"\n    }\n  ],\n  \"rationale\": \"Search rooms until you pick up the correct key, use it to unlock the locked door, go into the room with the ball, and pick up the ball to complete the task.\"\n}",
+     "plan": [
+      {
+       "target": "key",
+       "done_when": "carrying_key",
+       "repeat": "each_room_before_the_goal_room"
+      },
+      {
+       "target": "locked_door",
+       "done_when": "door_unlocked",
+       "repeat": "once"
+      },
+      {
+       "target": "next_room_door",
+       "done_when": "entered_next_room",
+       "repeat": "once"
+      },
+      {
+       "target": "ball",
+       "done_when": "task_complete",
+       "repeat": "once"
+      }
+     ],
+     "rationale": "Search rooms until you pick up the correct key, use it to unlock the locked door, go into the room with the ball, and pick up the ball to complete the task.",
+     "matches_reference": false,
+     "seconds": 4.35
+    },
+    {
+     "sample": 4,
+     "status": "completed",
+     "service_tier": "default",
+     "response_model": "gpt-5-mini-2025-08-07",
+     "tokens_in": 492,
+     "tokens_out": 461,
+     "usd": 0.001045,
+     "raw": "{\n  \"plan\": [\n    {\n      \"target\": \"key\",\n      \"done_when\": \"carrying_key\",\n      \"repeat\": \"each_room_before_the_goal_room\"\n    },\n    {\n      \"target\": \"locked_door\",\n      \"done_when\": \"door_unlocked\",\n      \"repeat\": \"once\"\n    },\n    {\n      \"target\": \"next_room_door\",\n      \"done_when\": \"entered_next_room\",\n      \"repeat\": \"once\"\n    },\n    {\n      \"target\": \"ball\",\n      \"done_when\": \"task_complete\",\n      \"repeat\": \"once\"\n    }\n  ],\n  \"rationale\": \"Search each side room until you pick up the key, use it to unlock the locked door to the ball's room, enter that room, and pick up the ball to complete the task.\"\n}",
+     "plan": [
+      {
+       "target": "key",
+       "done_when": "carrying_key",
+       "repeat": "each_room_before_the_goal_room"
+      },
+      {
+       "target": "locked_door",
+       "done_when": "door_unlocked",
+       "repeat": "once"
+      },
+      {
+       "target": "next_room_door",
+       "done_when": "entered_next_room",
+       "repeat": "once"
+      },
+      {
+       "target": "ball",
+       "done_when": "task_complete",
+       "repeat": "once"
+      }
+     ],
+     "rationale": "Search each side room until you pick up the key, use it to unlock the locked door to the ball's room, enter that room, and pick up the ball to complete the task.",
+     "matches_reference": false,
+     "seconds": 4.26
+    }
+   ]
+  },
+  "multiroom_n6": {
+   "prompt": "PROMPT VERSION: stage_plan_v1\nYou are the TEACHER for a reinforcement-learning student. Write the ordered SUBGOAL PLAN the student should follow to accomplish the mission. During training the student is rewarded for progress through your plan: for each step, getting closer to its target, and completing it.\n\nTASK. MultiRoom-N6. Up to six rooms are connected one after another in a chain; each room has a closed (not locked) door leading to the next room. The agent starts in the first room and the green goal square is in the last room. Mission text: 'traverse the rooms to get to the goal'. The episode succeeds when the agent reaches the goal.\n\nMECHANICS. The world is a MiniGrid grid. The agent moves with actions turn left, turn right, move forward, pick up, drop and toggle. Toggle opens or closes the door in front of the agent; a LOCKED door opens only if the agent is carrying a key of the same colour. The agent can carry one object at a time. Walls and closed doors block movement.\n\nVOCABULARY. Each step has:\n- target: key (the key that opens the locked door), locked_door, next_room_door (the door leading out of the current room toward the goal), ball, goal (the green goal square), box\n- done_when: carrying_key (the agent holds the key), door_unlocked (the target door has been unlocked), entered_next_room (the agent has passed into the next room), task_complete (the mission is accomplished and the episode ends)\n- repeat: once, or each_room_before_the_goal_room (repeat the step for every room until the room that contains the goal)\n\nUse only these options, in the order the student should follow them, with as few steps as the mission needs. Give a one-sentence rationale.",
+   "prompt_sha256": "607592a66d00ec8c022f5b9e5e92a9611a3144568a3d4d21fe3d9a12013fb298",
+   "reference": [
+    [
+     "next_room_door",
+     "entered_next_room",
+     "each_room_before_the_goal_room"
+    ],
+    [
+     "goal",
+     "task_complete",
+     "once"
+    ]
+   ],
+   "samples": [
+    {
+     "sample": 0,
+     "status": "completed",
+     "service_tier": "default",
+     "response_model": "gpt-5-mini-2025-08-07",
+     "tokens_in": 495,
+     "tokens_out": 263,
+     "usd": 0.00065,
+     "raw": "{\n  \"plan\": [\n    {\n      \"target\": \"next_room_door\",\n      \"done_when\": \"entered_next_room\",\n      \"repeat\": \"each_room_before_the_goal_room\"\n    },\n    {\n      \"target\": \"goal\",\n      \"done_when\": \"task_complete\",\n      \"repeat\": \"once\"\n    }\n  ],\n  \"rationale\": \"Open and pass through each closed door in sequence to move room-by-room toward the last room, then enter the goal to finish the task.\"\n}",
+     "plan": [
+      {
+       "target": "next_room_door",
+       "done_when": "entered_next_room",
+       "repeat": "each_room_before_the_goal_room"
+      },
+      {
+       "target": "goal",
+       "done_when": "task_complete",
+       "repeat": "once"
+      }
+     ],
+     "rationale": "Open and pass through each closed door in sequence to move room-by-room toward the last room, then enter the goal to finish the task.",
+     "matches_reference": true,
+     "seconds": 3.15
+    },
+    {
+     "sample": 1,
+     "status": "completed",
+     "service_tier": "default",
+     "response_model": "gpt-5-mini-2025-08-07",
+     "tokens_in": 495,
+     "tokens_out": 477,
+     "usd": 0.001078,
+     "raw": "{\"plan\":[{\"target\":\"next_room_door\",\"done_when\":\"door_unlocked\",\"repeat\":\"each_room_before_the_goal_room\"},{\"target\":\"next_room_door\",\"done_when\":\"entered_next_room\",\"repeat\":\"each_room_before_the_goal_room\"},{\"target\":\"goal\",\"done_when\":\"task_complete\",\"repeat\":\"once\"}],\"rationale\":\"For each intermediate room, open the door ahead and then move through it, repeating until you reach the final room and enter the goal.\"}",
+     "plan": [
+      {
+       "target": "next_room_door",
+       "done_when": "door_unlocked",
+       "repeat": "each_room_before_the_goal_room"
+      },
+      {
+       "target": "next_room_door",
+       "done_when": "entered_next_room",
+       "repeat": "each_room_before_the_goal_room"
+      },
+      {
+       "target": "goal",
+       "done_when": "task_complete",
+       "repeat": "once"
+      }
+     ],
+     "rationale": "For each intermediate room, open the door ahead and then move through it, repeating until you reach the final room and enter the goal.",
+     "matches_reference": false,
+     "seconds": 5.53
+    },
+    {
+     "sample": 2,
+     "status": "completed",
+     "service_tier": "default",
+     "response_model": "gpt-5-mini-2025-08-07",
+     "tokens_in": 495,
+     "tokens_out": 385,
+     "usd": 0.000894,
+     "raw": "{\n  \"plan\": [\n    {\n      \"target\": \"next_room_door\",\n      \"done_when\": \"door_unlocked\",\n      \"repeat\": \"each_room_before_the_goal_room\"\n    },\n    {\n      \"target\": \"next_room_door\",\n      \"done_when\": \"entered_next_room\",\n      \"repeat\": \"each_room_before_the_goal_room\"\n    },\n    {\n      \"target\": \"goal\",\n      \"done_when\": \"task_complete\",\n      \"repeat\": \"once\"\n    }\n  ],\n  \"rationale\": \"For each intermediate room, first open the door ahead, then move through it, and finally reach the goal in the last room to complete the task.\"\n}",
+     "plan": [
+      {
+       "target": "next_room_door",
+       "done_when": "door_unlocked",
+       "repeat": "each_room_before_the_goal_room"
+      },
+      {
+       "target": "next_room_door",
+       "done_when": "entered_next_room",
+       "repeat": "each_room_before_the_goal_room"
+      },
+      {
+       "target": "goal",
+       "done_when": "task_complete",
+       "repeat": "once"
+      }
+     ],
+     "rationale": "For each intermediate room, first open the door ahead, then move through it, and finally reach the goal in the last room to complete the task.",
+     "matches_reference": false,
+     "seconds": 4.91
+    },
+    {
+     "sample": 3,
+     "status": "completed",
+     "service_tier": "default",
+     "response_model": "gpt-5-mini-2025-08-07",
+     "tokens_in": 495,
+     "tokens_out": 270,
+     "usd": 0.000664,
+     "raw": "{\"plan\":[{\"target\":\"next_room_door\",\"done_when\":\"entered_next_room\",\"repeat\":\"each_room_before_the_goal_room\"},{\"target\":\"goal\",\"done_when\":\"task_complete\",\"repeat\":\"once\"}],\"rationale\":\"Open and pass through each successive door until you reach the final room, then move to the goal to complete the episode.\"}",
+     "plan": [
+      {
+       "target": "next_room_door",
+       "done_when": "entered_next_room",
+       "repeat": "each_room_before_the_goal_room"
+      },
+      {
+       "target": "goal",
+       "done_when": "task_complete",
+       "repeat": "once"
+      }
+     ],
+     "rationale": "Open and pass through each successive door until you reach the final room, then move to the goal to complete the episode.",
+     "matches_reference": true,
+     "seconds": 3.38
+    },
+    {
+     "sample": 4,
+     "status": "completed",
+     "service_tier": "default",
+     "response_model": "gpt-5-mini-2025-08-07",
+     "tokens_in": 495,
+     "tokens_out": 568,
+     "usd": 0.00126,
+     "raw": "{\"plan\":[{\"target\":\"next_room_door\",\"done_when\":\"door_unlocked\",\"repeat\":\"each_room_before_the_goal_room\"},{\"target\":\"next_room_door\",\"done_when\":\"entered_next_room\",\"repeat\":\"each_room_before_the_goal_room\"},{\"target\":\"goal\",\"done_when\":\"task_complete\",\"repeat\":\"once\"}],\"rationale\":\"For each room before the goal, open the door then go through it, and finally move to the goal square to complete the task.\"}",
+     "plan": [
+      {
+       "target": "next_room_door",
+       "done_when": "door_unlocked",
+       "repeat": "each_room_before_the_goal_room"
+      },
+      {
+       "target": "next_room_door",
+       "done_when": "entered_next_room",
+       "repeat": "each_room_before_the_goal_room"
+      },
+      {
+       "target": "goal",
+       "done_when": "task_complete",
+       "repeat": "once"
+      }
+     ],
+     "rationale": "For each room before the goal, open the door then go through it, and finally move to the goal square to complete the task.",
+     "matches_reference": false,
+     "seconds": 7.12
+    }
+   ]
+  }
+ },
+ "total_usd": 0.013119
+}

@@ -1,0 +1,30 @@
+{
+  "recorded_on": "2026-09-09",
+  "provenance": "Copy of configs/prices.json (recorded 2026-09-09) for the online llm_scoped study, with the dated snapshot gpt-5-mini-2025-08-07 priced at the gpt-5-mini rates, because that snapshot is the model of the offline consultations and the loader needs an exact name. Original provenance: Chat rates copied from the project's existing PRICING table in teachers/minigrid/llm_prompts.py (stated there as OpenAI published pricing, mid-2026). The gpt-5-mini figures are corroborated by measurement, not only by the table: the 2026-09-09 five-arm smoke billed $0.157-$0.170 for 32 consultations, i.e. ~$0.0053 per call, which at these rates implies roughly 2500 output tokens per call - consistent with a reasoning model spending hidden reasoning tokens. The embedding rate is NOT independently verified and is used only as a bound; confirm it against current pricing before trusting any embedding dollar total. Re-date this file when prices are re-checked; the loader refuses a table with no recorded_on.",
+  "models": {
+    "gpt-5-mini": {
+      "input_per_million": 0.25,
+      "output_per_million": 2.0
+    },
+    "gpt-5": {
+      "input_per_million": 1.25,
+      "output_per_million": 10.0
+    },
+    "gpt-4.1-mini": {
+      "input_per_million": 0.4,
+      "output_per_million": 1.6
+    },
+    "gpt-5-mini-2025-08-07": {
+      "input_per_million": 0.25,
+      "output_per_million": 2.0
+    }
+  },
+  "embeddings": {
+    "text-embedding-3-small": {
+      "per_million": 0.02
+    },
+    "text-embedding-3-large": {
+      "per_million": 0.13
+    }
+  }
+}

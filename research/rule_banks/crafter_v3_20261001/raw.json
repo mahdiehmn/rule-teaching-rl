@@ -1,0 +1,557 @@
+{
+ "consult_status": {
+  "rule": 36
+ },
+ "cost_usd": {
+  "consult": 0.121501,
+  "refine": 0.103944
+ },
+ "filter": null,
+ "mode": "scoped",
+ "model": "gpt-5-mini-2025-08-07",
+ "observer": "crafter_mem_v1",
+ "rules": [
+  {
+   "action": 2,
+   "condition": {
+    "tree_dir": "right",
+    "tree_visible": "yes",
+    "wood": "0"
+   },
+   "exceptions": [
+    [
+     "zombie_visible",
+     "yes"
+    ],
+    [
+     "zombie_dist",
+     "adjacent"
+    ]
+   ]
+  },
+  {
+   "action": 2,
+   "condition": {
+    "facing": "left",
+    "zombie_dir": "right",
+    "zombie_dist": "adjacent",
+    "zombie_visible": "yes"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 5,
+   "condition": {
+    "front": "zombie",
+    "health": "mid",
+    "iron_sword": "no",
+    "stone_sword": "no",
+    "wood_sword": "no"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 1,
+   "condition": {
+    "done_collect_stone": "no",
+    "done_collect_wood": "yes",
+    "done_defeat_skeleton": "no",
+    "done_defeat_zombie": "no",
+    "done_eat_cow": "yes",
+    "done_eat_plant": "no",
+    "done_make_iron_pickaxe": "no",
+    "done_make_iron_sword": "no",
+    "done_make_stone_pickaxe": "no",
+    "done_make_stone_sword": "no",
+    "done_make_wood_pickaxe": "no",
+    "done_make_wood_sword": "no",
+    "done_place_furnace": "no",
+    "done_place_plant": "yes",
+    "done_place_stone": "no",
+    "done_place_table": "yes",
+    "done_wake_up": "yes",
+    "front": "grass",
+    "iron_pickaxe": "no",
+    "iron_sword": "no",
+    "near_table": "no",
+    "stone": "0",
+    "stone_dir": "left",
+    "stone_dist": "far",
+    "stone_pickaxe": "no",
+    "stone_sword": "no",
+    "stone_visible": "yes",
+    "wood_pickaxe": "no",
+    "wood_sword": "no"
+   },
+   "exceptions": [
+    [
+     "lava_visible",
+     "yes"
+    ],
+    [
+     "skeleton_dist",
+     "adjacent"
+    ]
+   ]
+  },
+  {
+   "action": 5,
+   "condition": {
+    "front": "tree"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 5,
+   "condition": {
+    "front": "cow",
+    "health": "high"
+   },
+   "exceptions": [
+    [
+     "zombie_visible",
+     "yes"
+    ],
+    [
+     "skeleton_visible",
+     "yes"
+    ]
+   ]
+  },
+  {
+   "action": 1,
+   "condition": {
+    "facing": "up",
+    "front": "table",
+    "near_table": "yes",
+    "tree_dir": "left",
+    "tree_dist": "near",
+    "tree_visible": "yes",
+    "wood": "0"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 4,
+   "condition": {
+    "cow_dir": "down",
+    "cow_dist": "far",
+    "cow_visible": "yes",
+    "facing": "down",
+    "front": "grass",
+    "skeleton_visible": "no",
+    "zombie_visible": "no"
+   },
+   "exceptions": [
+    [
+     "health",
+     "low"
+    ],
+    [
+     "food",
+     "low"
+    ]
+   ]
+  },
+  {
+   "action": 5,
+   "condition": {},
+   "exceptions": []
+  },
+  {
+   "action": 11,
+   "condition": {
+    "near_table": "yes",
+    "wood_pickaxe": "no"
+   },
+   "exceptions": [
+    [
+     "wood",
+     "0"
+    ],
+    [
+     "wood_pickaxe",
+     "yes"
+    ]
+   ]
+  },
+  {
+   "action": 5,
+   "condition": {
+    "front": "tree",
+    "iron_pickaxe": "no",
+    "iron_sword": "no",
+    "stone_pickaxe": "no",
+    "stone_sword": "no",
+    "tree_dist": "adjacent",
+    "wood": "1",
+    "wood_pickaxe": "no",
+    "wood_sword": "no"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 3,
+   "condition": {
+    "daylight": "day",
+    "water_dir": "up",
+    "water_visible": "yes"
+   },
+   "exceptions": [
+    [
+     "lava_visible",
+     "yes"
+    ],
+    [
+     "water_dir",
+     "down"
+    ]
+   ]
+  },
+  {
+   "action": 5,
+   "condition": {
+    "drink": "low",
+    "front": "water"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "tree_dir": "right",
+    "tree_visible": "yes",
+    "wood": "1"
+   },
+   "exceptions": [
+    [
+     "front",
+     "tree"
+    ],
+    [
+     "zombie_visible",
+     "yes"
+    ]
+   ]
+  },
+  {
+   "action": 5,
+   "condition": {
+    "front": "water"
+   },
+   "exceptions": [
+    [
+     "drink",
+     "high"
+    ]
+   ]
+  },
+  {
+   "action": 3,
+   "condition": {
+    "facing": "up",
+    "front": "sand"
+   },
+   "exceptions": [
+    [
+     "lava_dist",
+     "adjacent"
+    ]
+   ]
+  },
+  {
+   "action": 3,
+   "condition": {
+    "daylight": "day",
+    "done_collect_coal": "no",
+    "done_collect_diamond": "no",
+    "done_collect_drink": "yes",
+    "done_collect_iron": "no",
+    "done_collect_sapling": "yes",
+    "done_collect_stone": "no",
+    "done_collect_wood": "no",
+    "done_defeat_skeleton": "no",
+    "done_defeat_zombie": "no",
+    "done_eat_cow": "no",
+    "done_eat_plant": "no",
+    "done_make_iron_pickaxe": "no",
+    "done_make_iron_sword": "no",
+    "done_make_stone_pickaxe": "no",
+    "done_make_stone_sword": "no",
+    "done_make_wood_pickaxe": "no",
+    "done_make_wood_sword": "no",
+    "done_place_furnace": "no",
+    "done_place_plant": "yes",
+    "done_place_stone": "no",
+    "done_place_table": "no",
+    "done_wake_up": "no",
+    "drink": "high",
+    "energy": "high",
+    "facing": "up",
+    "food": "high",
+    "front": "grass",
+    "health": "high",
+    "iron_pickaxe": "no",
+    "iron_sword": "no",
+    "sapling": "1+",
+    "stone_pickaxe": "no",
+    "stone_sword": "no",
+    "tree_visible": "no",
+    "water_visible": "yes",
+    "wood": "0",
+    "wood_pickaxe": "no",
+    "wood_sword": "no"
+   },
+   "exceptions": [
+    [
+     "zombie_visible",
+     "yes"
+    ],
+    [
+     "skeleton_visible",
+     "yes"
+    ]
+   ]
+  },
+  {
+   "action": 2,
+   "condition": {
+    "facing": "right",
+    "front": "grass",
+    "water_dir": "right",
+    "water_dist": "near",
+    "water_visible": "yes"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "tree_dir": "right",
+    "tree_dist": "near",
+    "tree_visible": "yes"
+   },
+   "exceptions": [
+    [
+     "wood",
+     "2+"
+    ],
+    [
+     "front",
+     "lava"
+    ]
+   ]
+  },
+  {
+   "action": 1,
+   "condition": {
+    "iron_pickaxe": "no",
+    "iron_sword": "no",
+    "stone_pickaxe": "no",
+    "stone_sword": "no",
+    "tree_dir": "left",
+    "tree_visible": "yes",
+    "wood": "0",
+    "wood_pickaxe": "no",
+    "wood_sword": "no"
+   },
+   "exceptions": [
+    [
+     "cow_dist",
+     "adjacent"
+    ],
+    [
+     "zombie_dist",
+     "adjacent"
+    ]
+   ]
+  },
+  {
+   "action": 4,
+   "condition": {
+    "facing": "down",
+    "front": "grass",
+    "iron_pickaxe": "no",
+    "iron_sword": "no",
+    "stone_pickaxe": "no",
+    "stone_sword": "no",
+    "tree_dir": "down",
+    "tree_dist": "near",
+    "tree_visible": "yes",
+    "wood": "0",
+    "wood_pickaxe": "no",
+    "wood_sword": "no"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 5,
+   "condition": {
+    "drink": "low"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 5,
+   "condition": {
+    "front": "water"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 5,
+   "condition": {
+    "facing": "down",
+    "wood": "0"
+   },
+   "exceptions": [
+    [
+     "wood",
+     "2+"
+    ]
+   ]
+  },
+  {
+   "action": 2,
+   "condition": {
+    "tree_dir": "right",
+    "tree_visible": "yes"
+   },
+   "exceptions": [
+    [
+     "zombie_visible",
+     "yes"
+    ],
+    [
+     "zombie_dist",
+     "adjacent"
+    ]
+   ]
+  },
+  {
+   "action": 1,
+   "condition": {
+    "front": "grass",
+    "tree_dir": "left",
+    "tree_dist": "far",
+    "tree_visible": "yes"
+   },
+   "exceptions": [
+    [
+     "lava_visible",
+     "yes"
+    ]
+   ]
+  },
+  {
+   "action": 5,
+   "condition": {
+    "front": "cow"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 11,
+   "condition": {
+    "near_table": "yes",
+    "wood": "2+",
+    "wood_pickaxe": "no"
+   },
+   "exceptions": [
+    [
+     "wood_pickaxe",
+     "yes"
+    ]
+   ]
+  },
+  {
+   "action": 5,
+   "condition": {
+    "wood": "0"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 1,
+   "condition": {
+    "front": "grass",
+    "tree_dir": "left",
+    "tree_visible": "yes"
+   },
+   "exceptions": [
+    [
+     "zombie_visible",
+     "yes"
+    ],
+    [
+     "lava_visible",
+     "yes"
+    ]
+   ]
+  },
+  {
+   "action": 1,
+   "condition": {
+    "coal": "0",
+    "diamond": "0",
+    "done_collect_coal": "no",
+    "done_collect_diamond": "no",
+    "done_collect_drink": "no",
+    "done_collect_iron": "no",
+    "done_collect_sapling": "no",
+    "done_collect_stone": "no",
+    "done_collect_wood": "yes",
+    "done_defeat_skeleton": "no",
+    "done_defeat_zombie": "no",
+    "done_eat_cow": "no",
+    "done_eat_plant": "no",
+    "done_make_iron_pickaxe": "no",
+    "done_make_iron_sword": "no",
+    "done_make_stone_pickaxe": "no",
+    "done_make_stone_sword": "no",
+    "done_make_wood_pickaxe": "no",
+    "done_make_wood_sword": "no",
+    "done_place_furnace": "no",
+    "done_place_plant": "no",
+    "done_place_stone": "no",
+    "done_place_table": "no",
+    "done_wake_up": "yes",
+    "drink": "mid",
+    "energy": "high",
+    "facing": "down",
+    "food": "mid",
+    "front": "grass",
+    "health": "mid",
+    "iron": "0",
+    "iron_pickaxe": "no",
+    "iron_sword": "no",
+    "sapling": "0",
+    "stone": "0",
+    "stone_pickaxe": "no",
+    "stone_sword": "no",
+    "wood": "1",
+    "wood_pickaxe": "no",
+    "wood_sword": "no",
+    "zombie_dir": "left",
+    "zombie_dist": "adjacent",
+    "zombie_visible": "yes"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "cow_dir": "right",
+    "cow_dist": "adjacent",
+    "cow_visible": "yes"
+   },
+   "exceptions": []
+  }
+ ],
+ "source_replies_sha256": {
+  "consult": "ebb7b6ce349966b4f9465b65c856119def020e072248ff6edbd87dc3fc8ffc83",
+  "refine": "49fd32226b2181e7202460a73fe5600e6105bdc783f31bece2d0d867968c53e7"
+ },
+ "study": "crafter_rules_v3_20261001",
+ "task": "crafter"
+}

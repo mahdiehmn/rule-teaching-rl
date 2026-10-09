@@ -1,0 +1,58 @@
+\section{Additional Crafter Results}\label{additional-crafter-results}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\caption{Additional symbolic-Crafter evidence. Fresh training uses ten
+new training seeds and learning-average distinct achievements per
+episode over 20 checkpoints. Fresh-world results evaluate the original
+final policies on fifty additional worlds and measure endpoint
+achievements. These are separate questions and metrics.}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Study and contrast
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Effect
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+95\% CI or reported scope
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Study and contrast
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Effect
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+95\% CI or reported scope
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Fresh training: PPO, bank minus none & +.495 & {[}.293, .696{]}; Holm
+\(p=.0011\) \\
+Fresh training: Count-PPO, bank minus none & +.447 & {[}.296, .597{]};
+Holm \(p=.00035\) \\
+Fresh training: PPO, full minus no-progress bank & +.345 &
+{[}.082,.608{]}; Holm \(p=.032\) \\
+Fresh training: Count-PPO, full minus no-progress bank & +.190 &
+{[}\ensuremath{-}.057,.436{]}; Holm \(p=.116\) \\
+Fresh worlds: PPO, bank minus none & +.550 & {[}.158, .942{]}; Holm
+\(p=.034\) \\
+Fresh worlds: PPO, full minus no-progress bank & +.278 & {[}.060,
+.496{]}; Holm \(p=.036\) \\
+Fresh worlds: Count-PPO, bank minus none & +.200 & {[}\ensuremath{-}.135,.535{]};
+Holm \(p=.21\) \\
+\end{longtable}
+
+Fresh-world PPO means are 6.800 with advice and 6.250 without advice;
+Count-PPO means are 6.772 and 6.572. The fixed ten-world panel used
+during learning is disjoint from the training worlds; the fifty
+additional worlds provide a separate final-policy evaluation. In
+development, direct bank execution with action preconditions achieved
+3.55 achievements over 20 episodes, compared with 2.60 for random
+actions. That diagnostic uses a different panel and is not a paired
+comparison with the student results.
+

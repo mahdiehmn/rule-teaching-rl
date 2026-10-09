@@ -1,0 +1,9 @@
+{
+  "recorded_on": "2026-10-05",
+  "provenance": "Official OpenAI documentation fetched 2026-10-05: https://developers.openai.com/api/docs/pricing lists Standard GPT-5-mini input USD0.25 and output USD2.00 per million tokens; https://developers.openai.com/api/docs/models/gpt-5-mini identifies gpt-5-mini-2025-08-07 as its snapshot. Bounds ignore cache discounts and require service_tier=default. These are token-cost bounds, not a provider balance or invoice.",
+  "models": {
+    "gpt-5-mini": {"input_per_million": 0.25, "output_per_million": 2.0},
+    "gpt-5-mini-2025-08-07": {"input_per_million": 0.25, "output_per_million": 2.0}
+  },
+  "embeddings": {}
+}

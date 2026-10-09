@@ -1,0 +1,102 @@
+{
+ "dk_full": {
+  "controller_sha256": "21685f239c77f0eb4dbb3cfe245dda88aafe73ac40dffb9c2180afbb0416da00",
+  "errors": 0,
+  "invalid": 0,
+  "success": 1.0,
+  "task": "doorkey_8x8",
+  "variant": "full"
+ },
+ "dk_full@doorkey_16x16": {
+  "controller_sha256": "21685f239c77f0eb4dbb3cfe245dda88aafe73ac40dffb9c2180afbb0416da00",
+  "errors": 0,
+  "invalid": 0,
+  "success": 1.0,
+  "task": "doorkey_16x16",
+  "variant": "full"
+ },
+ "dk_view": {
+  "controller_sha256": "dcd8349ab1bb3be88b6a132cfbc3e0486c5610188fee66da0977e41eb2681dd8",
+  "errors": 0,
+  "invalid": 0,
+  "mix": 0.25,
+  "mixed_success": 0.94,
+  "success": 0.37,
+  "task": "doorkey_8x8",
+  "variant": "view"
+ },
+ "dk_view@doorkey_16x16": {
+  "controller_sha256": "dcd8349ab1bb3be88b6a132cfbc3e0486c5610188fee66da0977e41eb2681dd8",
+  "errors": 0,
+  "invalid": 0,
+  "mix": 0.25,
+  "mixed_success": 0.97,
+  "success": 0.86,
+  "task": "doorkey_16x16",
+  "variant": "view"
+ },
+ "kc_full": {
+  "controller_sha256": "fa362d473578a4f07abd1e99b412b66d5fddf077bf815dcd26254262a81ea8c6",
+  "errors": 0,
+  "invalid": 0,
+  "success": 0.87,
+  "task": "keycorridor_s3r3",
+  "variant": "full"
+ },
+ "kc_view": {
+  "controller_sha256": "860f4b23eaeffb137e86d30642fb6ab8278409ff5aca108e957ce4809da9e5c9",
+  "errors": 0,
+  "invalid": 0,
+  "mix": 0.25,
+  "mixed_success": 0.08,
+  "success": 0.0,
+  "task": "keycorridor_s3r3",
+  "variant": "view"
+ },
+ "kc_view@keycorridor_s4r3": {
+  "controller_sha256": "860f4b23eaeffb137e86d30642fb6ab8278409ff5aca108e957ce4809da9e5c9",
+  "errors": 0,
+  "invalid": 0,
+  "mix": 0.25,
+  "mixed_success": 0.0,
+  "success": 0.0,
+  "task": "keycorridor_s4r3",
+  "variant": "view"
+ },
+ "mr_full": {
+  "controller_sha256": "b41aef892493bbda1bc727454e70571961a13cad86041c34ed92d0017edb4765",
+  "errors": 0,
+  "invalid": 0,
+  "success": 1.0,
+  "task": "multiroom_n6",
+  "variant": "full"
+ },
+ "mr_full@multiroom_n10": {
+  "controller_sha256": "b41aef892493bbda1bc727454e70571961a13cad86041c34ed92d0017edb4765",
+  "errors": 0,
+  "invalid": 0,
+  "success": 1.0,
+  "task": "multiroom_n10",
+  "variant": "full"
+ },
+ "mr_view": {
+  "controller_sha256": "0a72ace6104598553851a7bb92ba0c8394a2f68adf367de5d53fb9c1370d91ce",
+  "errors": 0,
+  "invalid": 0,
+  "mix": 0.25,
+  "mixed_success": 0.0,
+  "success": 0.0,
+  "task": "multiroom_n6",
+  "variant": "view"
+ },
+ "mr_view@multiroom_n10": {
+  "controller_sha256": "0a72ace6104598553851a7bb92ba0c8394a2f68adf367de5d53fb9c1370d91ce",
+  "errors": 0,
+  "invalid": 0,
+  "mix": 0.25,
+  "mixed_success": 0.0,
+  "success": 0.0,
+  "task": "multiroom_n10",
+  "variant": "view"
+ }
+}

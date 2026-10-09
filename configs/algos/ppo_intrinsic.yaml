@@ -1,0 +1,62 @@
+# PPO with a pluggable exploration bonus (algos/ppo_intrinsic.py).
+#
+# These are the teacher-free baselines the teacher has to beat. The
+# previous only curiosity baseline was RND, which is the method every
+# later MiniGrid exploration paper is measured against and beats; a
+# 0.00 from RND alone therefore cannot support "no teacher-free
+# method reaches this task". See docs/pure_rl_baselines.md.
+#
+# Like the other files in configs/, this records the intended
+# settings; the training scripts read their defaults from the Args
+# dataclass and the command line.
+algo: ppo_intrinsic
+
+# Which bonus: none | count | rnd | noveld | re3 | e3b.
+# 'none' is the architecture-matched plain-PPO control -- prefer it
+# over algos/ppo.py when attributing a difference to the bonus,
+# since it differs in exactly one thing.
+bonus: noveld
+# Add a GRU core. Required diagnostic on KeyCorridor, whose
+# difficulty is a HIDDEN key (memory) as much as exploration.
+recurrent: false
+# MiniGrid's native integer grid encoding, which is what the
+# exploration literature trains on. Compare against 'historical'
+# (the repo default) to separate perception from exploration.
+obs_mode: symbolic
+
+learning_rate: 0.00025
+num_envs: 8
+num_steps: 128
+# Long horizon for the sparse task reward, as in the RND line of
+# work; the intrinsic stream keeps its own shorter discount below.
+gamma: 0.999
+gae_lambda: 0.95
+num_minibatches: 4
+update_epochs: 4
+clip_coef: 0.2
+ent_coef: 0.01
+vf_coef: 0.5
+
+# --- Intrinsic-reward blending ---
+int_gamma: 0.99
+int_coef: 1.0
+ext_coef: 2.0
+# Divide the raw bonus by the running std of intrinsic returns so
+# the five bonuses (whose raw scales differ by orders of magnitude)
+# are comparable under a single int_coef.
+norm_int_reward: true
+
+# --- Per-bonus knobs ---
+# RND / NovelD predictor subsampling; lower means the predictor
+# learns more slowly and novelty persists past one visit.
+update_proportion: 0.25
+# NovelD: weight on the previous state's novelty in the difference
+# (0.5 is the paper's value), and the first-visit gate.
+noveld_alpha: 0.5
+noveld_episodic_gate: true
+# RE3: which nearest neighbour defines the entropy estimate.
+re3_k: 3
+# E3B: the ridge lambda in C_0 = lambda * I.
+e3b_ridge: 0.1
+# Count: episodic | global.
+count_scope: episodic

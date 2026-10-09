@@ -1,0 +1,11 @@
+# Headline task: compositional language mission. The per-episode
+# instruction is preserved in info['mission'] for the teacher.
+task: gotoseq
+gym_id: BabyAI-GoToSeq-v0
+
+# Suggested training budget. Hard for unguided PPO; the teacher and
+# RND runs share this budget so frames-to-threshold is comparable.
+total_timesteps: 20_000_000
+
+# Success-rate threshold used for the frames-to-threshold metric.
+success_threshold: 0.8

@@ -1,0 +1,25 @@
+% Requires algorithm and algpseudocode. Included by the Appendix file.
+\begin{algorithm}[t]
+\caption{Training with executable advice. Count-PPO additionally stores
+the count bonus; MiniGrid uses a separate intrinsic reward stream.}
+\label{alg:training}
+\begin{algorithmic}[1]
+\Require frozen bank $\mathcal{B}$, schedule $\lambda(\cdot)$, $K$ iterations
+\For{$k=1,\dots,K$}
+  \State $\tau_k\gets$ completed training fraction
+  \State $\lambda_k\gets\lambda(\tau_k)$
+  \For{each rollout step $t$ in every environment}
+    \State sample $a_t\sim\pi_\theta(\cdot\mid x_t)$
+    \State $y_t\gets E_{\mathcal{B}}(z_t)$ if $\lambda_k>0$; otherwise $\bot$
+    \State $m_t\gets\mathbb{I}[y_t\ne\bot]$
+    \State execute $a_t$; store transition, $y_t$ and $m_t$
+  \EndFor
+  \State compute advantages $\hat{A}_t$
+  \For{each minibatch $\mathcal{M}$ and epoch}
+    \State update $\theta$ using
+    $\mathcal{L}_{\mathrm{PPO}}+\lambda_k\mathcal{L}_{\mathrm{adv}}$
+  \EndFor
+\EndFor
+\State \Return $\pi_\theta$ \Comment{acts alone at evaluation}
+\end{algorithmic}
+\end{algorithm}

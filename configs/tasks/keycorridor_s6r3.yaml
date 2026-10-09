@@ -1,0 +1,9 @@
+# Control task: hard exploration, no language. Used to check whether
+# any teacher gain comes from semantics or just from more exploration.
+task: keycorridor_s6r3
+gym_id: MiniGrid-KeyCorridorS6R3-v0
+
+# Notoriously hard for vanilla PPO (near-zero without curiosity).
+total_timesteps: 20_000_000
+
+success_threshold: 0.8

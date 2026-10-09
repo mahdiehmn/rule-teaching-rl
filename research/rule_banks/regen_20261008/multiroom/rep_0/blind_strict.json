@@ -1,0 +1,182 @@
+{
+ "blind_check_status": {
+  "dropped": 16,
+  "kept": 12,
+  "unchecked_dropped": 2
+ },
+ "cost": {
+  "blind_check": {
+   "calls": 28,
+   "completed": 28,
+   "dollars": 0.054846
+  },
+  "consult": {
+   "calls": 36,
+   "completed": 36,
+   "dollars": 0.06787649999999999
+  }
+ },
+ "mode": "scoped",
+ "model": "gpt-5-mini-2025-08-07",
+ "observer": "multiroom_v1",
+ "rules": [
+  {
+   "action": 5,
+   "condition": {
+    "front": "door_closed"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 0,
+   "condition": {
+    "goal_ahead": "beside",
+    "goal_side": "left",
+    "goal_visible": "yes"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 5,
+   "condition": {
+    "closed_door_ahead": "ahead",
+    "closed_door_fwd": "1",
+    "closed_door_right": "0",
+    "closed_door_side": "center",
+    "closed_door_visible": "yes",
+    "door_ahead": "ahead",
+    "door_fwd": "1",
+    "door_right": "0",
+    "door_side": "center",
+    "door_state": "closed",
+    "door_visible": "yes",
+    "front": "door_closed"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 0,
+   "condition": {
+    "closed_door_fwd": "0",
+    "closed_door_side": "left",
+    "closed_door_visible": "yes",
+    "front": "wall"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "door_ahead": "ahead",
+    "door_state": "open",
+    "door_visible": "yes",
+    "front": "door_open"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 5,
+   "condition": {
+    "closed_door_ahead": "ahead",
+    "closed_door_fwd": "1",
+    "closed_door_right": "0",
+    "closed_door_side": "center",
+    "closed_door_visible": "yes",
+    "door_ahead": "ahead",
+    "door_fwd": "1",
+    "door_right": "0",
+    "door_side": "center",
+    "door_state": "closed",
+    "door_visible": "yes",
+    "front": "door_closed",
+    "goal_visible": "no"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 1,
+   "condition": {
+    "closed_door_ahead": "beside",
+    "closed_door_fwd": "0",
+    "closed_door_right": "1",
+    "closed_door_side": "right",
+    "closed_door_visible": "yes",
+    "door_ahead": "beside",
+    "door_fwd": "0",
+    "door_right": "1",
+    "door_side": "right",
+    "door_state": "closed",
+    "door_visible": "yes",
+    "front": "empty",
+    "goal_visible": "no"
+   },
+   "exceptions": [
+    [
+     "goal_visible",
+     "yes"
+    ]
+   ]
+  },
+  {
+   "action": 2,
+   "condition": {
+    "front": "door_open"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "front": "goal"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 5,
+   "condition": {
+    "front": "door_closed"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "closed_door_ahead": "ahead",
+    "closed_door_visible": "yes",
+    "front": "empty"
+   },
+   "exceptions": [
+    [
+     "goal_visible",
+     "yes"
+    ]
+   ]
+  },
+  {
+   "action": 1,
+   "condition": {
+    "closed_door_visible": "no",
+    "door_ahead": "beside",
+    "door_fwd": "0",
+    "door_right": "1",
+    "door_side": "right",
+    "door_state": "open",
+    "door_visible": "yes",
+    "front": "wall",
+    "goal_visible": "no"
+   },
+   "exceptions": [
+    [
+     "goal_visible",
+     "yes"
+    ]
+   ]
+  }
+ ],
+ "source_replies_sha256": {
+  "blind": "3b03e6af329d4e38f13ce2abde06f67f4c34dbaee92ef9a1382f57480afb10a5",
+  "consult": "0d3d936004d9a21ede14ee3537808997f5205f4c4dd82afcf700fea42bf48047"
+ },
+ "study": "conditional_rules_multiroom_20260928",
+ "task": "multiroom_n6"
+}

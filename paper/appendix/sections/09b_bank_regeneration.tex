@@ -1,0 +1,48 @@
+\section{Sensitivity to Bank Generation}
+\label{app:bank_regeneration}
+
+To examine dependence on a particular generated bank, we repeated
+the fixed DoorKey writing and blind-checking procedure five times
+using the same construction states. Each repetition constructs an
+entire bank from 36 initial rule-generation calls and subsequent
+checking requests. All five banks were retained for evaluation,
+without selecting among them using student learning outcomes.
+Bank 2 required a documented technical generation recovery before
+training; it was retained as part of the fixed five-bank study.
+
+Each bank taught PPO on ten fresh paired training seeds with a
+5M-step training budget. Table~\ref{tab:bank_regeneration} reports
+teacher-free sampled-action learning-curve area (AUC), compared
+with the paired no-advice students. Sampled-action reporting is
+a secondary choice made after inspecting the sampled and greedy
+evaluations; greedy evaluation was the pre-specified primary mode.
+AUC is normalized over the observed regular-checkpoint interval,
+204{,}800--4{,}999{,}168 training steps.
+
+\begin{table}[ht]
+\centering\small
+\caption{All five additional DoorKey banks. Mean paired sampled-AUC
+gain over no advice and unadjusted 95\% paired-$t$ confidence interval
+over ten training seeds for each bank.}
+\label{tab:bank_regeneration}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Bank & Mean $\Delta$AUC & 95\% CI\\
+\midrule
+0 & $+0.9506$ & $[+0.8685,+1.0326]$\\
+1 & $+0.8546$ & $[+0.7474,+0.9617]$\\
+2 & $+0.9234$ & $[+0.8001,+1.0467]$\\
+3 & $+0.7747$ & $[+0.5763,+0.9730]$\\
+4 & $+0.7854$ & $[+0.6752,+0.8957]$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+All five banks improved mean sampled AUC over no advice. This
+exploratory result shows that the observed DoorKey benefit extends
+beyond the originally selected bank under this fixed recipe and
+construction corpus. It does not establish that arbitrary banks
+work, or remove dependence on the earlier development of the
+vocabulary, prompts and checking procedure. The five banks are
+the generation repetitions; their 50 student runs are not 50
+independent banks.

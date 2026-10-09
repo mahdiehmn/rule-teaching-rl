@@ -1,0 +1,96 @@
+{
+ "model": "gpt-5-mini-2025-08-07",
+ "source": "research/stage_plans/stage_plans_20260929.json",
+ "source_sha256": "856f454ec7d1eedfeed03276548138542a7fa7166433e30618c5fed62b8193b5",
+ "created": "2026-09-29T08:07:43.474192+00:00",
+ "interpretation": {
+  "selection": "For each task, the most frequent plan over the samples; a tie goes to the plan sampled first. Declared before freezing, never chosen by learning outcomes.",
+  "repeat": "each_room_before_the_goal_room expands, as one block with adjacent repeated steps, once per room before the goal room in MultiRoom only. DoorKey and KeyCorridor have no room chain toward the goal, so there it means once. On KeyCorridor the LLM marked its key step this way ('search each side room until you pick up the key'); the potential targets the key's true cell, which is privileged information the plan did not assume.",
+  "door_unlocked": "For a door locked at episode start, unlocked; for a door never locked (MultiRoom), open: the LLM's rationale is 'open and pass through each closed door'.",
+  "semantics": "teachers/subgoal_potential.PlanStages"
+ },
+ "tasks": {
+  "doorkey_8x8": {
+   "plan": [
+    [
+     "key",
+     "carrying_key",
+     "once"
+    ],
+    [
+     "locked_door",
+     "door_unlocked",
+     "once"
+    ],
+    [
+     "next_room_door",
+     "entered_next_room",
+     "once"
+    ],
+    [
+     "goal",
+     "task_complete",
+     "once"
+    ]
+   ],
+   "sha256": "292f3b13a3839e0a3f6038de83113d3680efc4b8880ce54fdd79a972264a73ba",
+   "modal_count": 5,
+   "valid_samples": 5,
+   "distinct_plans": 1,
+   "equals_hand_coded": false
+  },
+  "keycorridor_s3r3": {
+   "plan": [
+    [
+     "key",
+     "carrying_key",
+     "each_room_before_the_goal_room"
+    ],
+    [
+     "locked_door",
+     "door_unlocked",
+     "once"
+    ],
+    [
+     "next_room_door",
+     "entered_next_room",
+     "once"
+    ],
+    [
+     "ball",
+     "task_complete",
+     "once"
+    ]
+   ],
+   "sha256": "3713c70efe6bdf83e5c6b618066747fc2fcfe3a30c5cd1cb9bce39442de6f4ba",
+   "modal_count": 4,
+   "valid_samples": 5,
+   "distinct_plans": 2,
+   "equals_hand_coded": false
+  },
+  "multiroom_n6": {
+   "plan": [
+    [
+     "next_room_door",
+     "door_unlocked",
+     "each_room_before_the_goal_room"
+    ],
+    [
+     "next_room_door",
+     "entered_next_room",
+     "each_room_before_the_goal_room"
+    ],
+    [
+     "goal",
+     "task_complete",
+     "once"
+    ]
+   ],
+   "sha256": "b430dc78e293ca6c992392bde792e19e4f04cacf83b025244454a0979b7bcc2a",
+   "modal_count": 3,
+   "valid_samples": 5,
+   "distinct_plans": 2,
+   "equals_hand_coded": false
+  }
+ }
+}

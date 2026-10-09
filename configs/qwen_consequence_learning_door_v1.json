@@ -1,0 +1,16 @@
+{
+  "experiment_id": "qwen_consequence_learning_door_v1",
+  "status": "prepared_not_launchable_until_adapter_gate",
+  "task": "doorkey_8x8",
+  "teacher": {"provider": "aleph", "model": "qwen3.8-27b", "reasoning_effort": "low"},
+  "student": {"observation": "local_symbolic_7x7", "architecture": "cnn_gru", "n_envs": 8, "num_steps": 128, "minibatches": 4, "update_epochs": 4, "transitions": 9999360},
+  "backgrounds": {
+    "weak_no_count": {"bonus": "none", "learning_rate": 0.00025, "gae_lambda": 0.95},
+    "strong_count": {"bonus": "count", "learning_rate": 0.001, "gae_lambda": 0.95}
+  },
+  "arms": ["ppo", "qwen_action", "qwen_action_consequence", "qwen_action_shuffled_consequence"],
+  "seeds": [7600500, 7600600, 7600700, 7600800, 7600900],
+  "consultations": {"max_per_guided_run": 480, "max_attempts": 1, "sdk_retries": 0},
+  "target": {"type": "simulator_checked_paired_consequence", "fields": ["position", "direction", "carrying_key", "door_state", "goal_reached"]},
+  "launch": {"sbatch": null, "reason": "trainer adapter, schema validation and replay tests are still required"}
+}

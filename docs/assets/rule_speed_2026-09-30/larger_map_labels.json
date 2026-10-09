@@ -1,0 +1,84 @@
+{
+ "DoorKey-8x8": {
+  "v3_20260928/blind_strict": {
+   "states": 476,
+   "coverage": 0.4684873949579832,
+   "precision": 0.968609865470852,
+   "correct": 216,
+   "labelled": 223
+  }
+ },
+ "DoorKey-16x16": {
+  "v3_20260928/blind_strict": {
+   "states": 478,
+   "coverage": 0.301255230125523,
+   "precision": 0.9930555555555556,
+   "correct": 143,
+   "labelled": 144
+  }
+ },
+ "KeyCorridor-S3R3": {
+  "keycorridor_mem_20260929/self_checked_pooled_valid": {
+   "states": 476,
+   "coverage": 0.5714285714285714,
+   "precision": 0.7610294117647058,
+   "correct": 207,
+   "labelled": 272
+  },
+  "keycorridor_20260928/scoped_valid": {
+   "states": 476,
+   "coverage": 0.48739495798319327,
+   "precision": 0.7801724137931034,
+   "correct": 181,
+   "labelled": 232
+  }
+ },
+ "KeyCorridor-S4R3": {
+  "keycorridor_mem_20260929/self_checked_pooled_valid": {
+   "states": 476,
+   "coverage": 0.5147058823529411,
+   "precision": 0.689795918367347,
+   "correct": 169,
+   "labelled": 245
+  },
+  "keycorridor_20260928/scoped_valid": {
+   "states": 476,
+   "coverage": 0.4642857142857143,
+   "precision": 0.8190045248868778,
+   "correct": 181,
+   "labelled": 221
+  }
+ },
+ "KeyCorridor-S5R3": {
+  "keycorridor_mem_20260929/self_checked_pooled_valid": {
+   "states": 158,
+   "coverage": 0.5569620253164557,
+   "precision": 0.7272727272727273,
+   "correct": 64,
+   "labelled": 88
+  },
+  "keycorridor_20260928/scoped_valid": {
+   "states": 158,
+   "coverage": 0.4430379746835443,
+   "precision": 0.8285714285714286,
+   "correct": 58,
+   "labelled": 70
+  }
+ },
+ "KeyCorridor-S6R3": {
+  "keycorridor_mem_20260929/self_checked_pooled_valid": {
+   "states": 96,
+   "coverage": 0.5104166666666666,
+   "precision": 0.6530612244897959,
+   "correct": 32,
+   "labelled": 49
+  },
+  "keycorridor_20260928/scoped_valid": {
+   "states": 96,
+   "coverage": 0.2916666666666667,
+   "precision": 0.7142857142857143,
+   "correct": 20,
+   "labelled": 28
+  }
+ }
+}

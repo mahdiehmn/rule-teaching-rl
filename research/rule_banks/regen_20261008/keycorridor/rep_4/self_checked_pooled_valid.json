@@ -1,0 +1,445 @@
+{
+ "added_predicates": [
+  "door_unlocked"
+ ],
+ "cost": {
+  "consult": {
+   "calls": 36,
+   "dollars": 0.080058
+  },
+  "refine": {
+   "calls": 27,
+   "dollars": 0.08161
+  }
+ },
+ "mode": "scoped",
+ "model": "gpt-5-mini-2025-08-07",
+ "observer": "keycorridor_mem_v1",
+ "prompt_version": "scoped_rule_kc_mem_v1",
+ "rules": [
+  {
+   "action": 3,
+   "condition": {
+    "carrying": "nothing",
+    "front": "key"
+   },
+   "exceptions": [
+    [
+     "door_unlocked",
+     "yes"
+    ]
+   ]
+  },
+  {
+   "action": 1,
+   "condition": {
+    "carrying": "nothing",
+    "key_ahead": "beside",
+    "key_fwd": "0",
+    "key_right": "1",
+    "key_side": "right",
+    "key_visible": "yes"
+   },
+   "exceptions": [
+    [
+     "ball_visible",
+     "yes"
+    ]
+   ]
+  },
+  {
+   "action": 2,
+   "condition": {
+    "carrying": "key",
+    "front": "empty",
+    "locked_door_ahead": "ahead",
+    "locked_door_visible": "yes"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 1,
+   "condition": {
+    "ball_side": "right",
+    "ball_visible": "yes",
+    "carrying": "key",
+    "front": "wall"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "carrying": "nothing",
+    "front": "door_open",
+    "key_ahead": "ahead",
+    "key_visible": "yes"
+   },
+   "exceptions": [
+    [
+     "front",
+     "key"
+    ],
+    [
+     "front",
+     "wall"
+    ]
+   ]
+  },
+  {
+   "action": 2,
+   "condition": {
+    "carrying": "nothing",
+    "front": "empty",
+    "key_ahead": "ahead",
+    "key_visible": "yes"
+   },
+   "exceptions": [
+    [
+     "front",
+     "key"
+    ],
+    [
+     "front",
+     "wall"
+    ]
+   ]
+  },
+  {
+   "action": 5,
+   "condition": {
+    "carrying": "key",
+    "front": "door_closed"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 5,
+   "condition": {
+    "carrying": "key",
+    "front": "door_locked"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "ball_ahead": "ahead",
+    "ball_fwd": "2",
+    "ball_right": "0",
+    "ball_side": "center",
+    "ball_visible": "yes",
+    "carrying": "key",
+    "door_ahead": "ahead",
+    "door_fwd": "1",
+    "door_right": "0",
+    "door_side": "center",
+    "door_state": "open",
+    "door_unlocked": "yes",
+    "door_visible": "yes",
+    "front": "door_open",
+    "key_visible": "no",
+    "locked_door_visible": "no"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 1,
+   "condition": {
+    "ball_visible": "no",
+    "carrying": "nothing",
+    "door_ahead": "ahead",
+    "door_fwd": "1",
+    "door_right": "0",
+    "door_side": "center",
+    "door_state": "closed",
+    "door_unlocked": "no",
+    "door_visible": "yes",
+    "front": "door_closed",
+    "key_visible": "no",
+    "locked_door_ahead": "ahead",
+    "locked_door_fwd": "1",
+    "locked_door_right": "-2",
+    "locked_door_side": "left",
+    "locked_door_visible": "yes"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 4,
+   "condition": {
+    "ball_ahead": "ahead",
+    "ball_visible": "yes",
+    "carrying": "key",
+    "front": "empty"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 3,
+   "condition": {
+    "carrying": "nothing",
+    "front": "key",
+    "key_visible": "yes"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 3,
+   "condition": {
+    "carrying": "nothing",
+    "front": "key",
+    "key_ahead": "ahead",
+    "key_fwd": "1",
+    "key_right": "0",
+    "key_side": "center",
+    "key_visible": "yes"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 0,
+   "condition": {
+    "carrying": "nothing",
+    "door_ahead": "ahead",
+    "door_fwd": "1",
+    "door_side": "left",
+    "door_visible": "yes",
+    "front": "wall",
+    "locked_door_visible": "no"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 5,
+   "condition": {
+    "ball_visible": "no",
+    "carrying": "key",
+    "door_ahead": "ahead",
+    "door_fwd": "1",
+    "door_right": "0",
+    "door_side": "center",
+    "door_state": "locked",
+    "door_unlocked": "no",
+    "door_visible": "yes",
+    "front": "door_locked",
+    "key_visible": "no",
+    "locked_door_ahead": "ahead",
+    "locked_door_fwd": "1",
+    "locked_door_right": "0",
+    "locked_door_side": "center",
+    "locked_door_visible": "yes"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 5,
+   "condition": {
+    "ball_visible": "no",
+    "carrying": "key",
+    "door_ahead": "ahead",
+    "door_fwd": "1",
+    "door_right": "0",
+    "door_side": "center",
+    "door_state": "locked",
+    "door_unlocked": "no",
+    "door_visible": "yes",
+    "front": "door_locked",
+    "key_ahead": "ahead",
+    "key_fwd": "0",
+    "key_right": "0",
+    "key_side": "center",
+    "key_visible": "no",
+    "locked_door_ahead": "ahead",
+    "locked_door_fwd": "1",
+    "locked_door_right": "0",
+    "locked_door_side": "center",
+    "locked_door_visible": "yes"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 1,
+   "condition": {
+    "front": "wall"
+   },
+   "exceptions": [
+    [
+     "locked_door_side",
+     "left"
+    ]
+   ]
+  },
+  {
+   "action": 5,
+   "condition": {
+    "carrying": "key",
+    "door_state": "locked",
+    "front": "door_locked"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 0,
+   "condition": {
+    "carrying": "key",
+    "door_ahead": "beside",
+    "door_fwd": "0",
+    "door_right": "-1",
+    "door_side": "left",
+    "door_state": "locked",
+    "door_unlocked": "no",
+    "key_visible": "no",
+    "locked_door_ahead": "beside",
+    "locked_door_fwd": "0",
+    "locked_door_right": "-1",
+    "locked_door_side": "left",
+    "locked_door_visible": "yes"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 4,
+   "condition": {
+    "ball_ahead": "beside",
+    "ball_fwd": "0",
+    "ball_visible": "yes",
+    "carrying": "key",
+    "front": "empty"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "carrying": "nothing",
+    "front": "empty"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 3,
+   "condition": {
+    "carrying": "nothing",
+    "front": "ball"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "ball_visible": "no",
+    "carrying": "key",
+    "door_ahead": "ahead",
+    "door_fwd": "2",
+    "door_right": "0",
+    "door_side": "center",
+    "door_state": "closed",
+    "door_unlocked": "no",
+    "door_visible": "yes",
+    "front": "empty",
+    "key_visible": "no",
+    "locked_door_visible": "no"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 5,
+   "condition": {
+    "ball_visible": "no",
+    "carrying": "nothing",
+    "door_ahead": "ahead",
+    "door_fwd": "1",
+    "door_right": "0",
+    "door_side": "center",
+    "door_state": "closed",
+    "door_unlocked": "yes",
+    "door_visible": "yes",
+    "front": "door_closed",
+    "locked_door_visible": "no"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 0,
+   "condition": {
+    "ball_visible": "no",
+    "door_ahead": "ahead",
+    "door_fwd": "1",
+    "door_right": "-3",
+    "door_side": "left",
+    "door_unlocked": "no",
+    "door_visible": "yes",
+    "front": "wall",
+    "key_visible": "no",
+    "locked_door_ahead": "ahead",
+    "locked_door_fwd": "1",
+    "locked_door_right": "-3",
+    "locked_door_side": "left",
+    "locked_door_visible": "yes"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "ball_visible": "no",
+    "carrying": "nothing",
+    "door_ahead": "beside",
+    "door_fwd": "0",
+    "door_right": "-1",
+    "door_side": "left",
+    "door_state": "open",
+    "door_unlocked": "no",
+    "door_visible": "yes",
+    "front": "door_open",
+    "key_ahead": "ahead",
+    "key_fwd": "2",
+    "key_right": "0",
+    "key_side": "center",
+    "key_visible": "yes",
+    "locked_door_ahead": "ahead",
+    "locked_door_fwd": "4",
+    "locked_door_right": "-3",
+    "locked_door_side": "left",
+    "locked_door_visible": "yes"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 5,
+   "condition": {
+    "carrying": "key",
+    "door_ahead": "ahead",
+    "door_state": "closed",
+    "door_visible": "yes",
+    "front": "door_closed"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 3,
+   "condition": {
+    "carrying": "nothing",
+    "door_unlocked": "yes",
+    "front": "ball"
+   },
+   "exceptions": []
+  }
+ ],
+ "self_check_status": {
+  "copies_1": 27,
+  "copies_2": 1,
+  "copies_3": 1,
+  "kept": 16,
+  "replaced": 13
+ },
+ "source_replies_sha256": {
+  "blind": "0f112193343df7e4bd6e4de59142fb441b0083b1e96f19b35a43cf518629ffb4",
+  "consult": "08a6d7d332fd26ba603a25523304e124dd4a8cdf78267eb1c83d93b881d938f0",
+  "refine": "832216121179b2ecda008ba718d08d1f2853054d1bd6b2f3ef77502ccf95e945"
+ },
+ "study": "conditional_rules_keycorridor_mem_20260929",
+ "task": "keycorridor_s3r3",
+ "transform": "valid_action_front_v1"
+}

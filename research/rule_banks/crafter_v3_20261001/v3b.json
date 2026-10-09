@@ -1,0 +1,404 @@
+{
+ "cost_usd": {
+  "refine_v2": 0.063904
+ },
+ "derived_from": "research/rule_banks/crafter_v2_20260930/self_checked.json",
+ "filter": null,
+ "mode": "scoped",
+ "model": "gpt-5-mini-2025-08-07",
+ "observer": "crafter_mem_v1",
+ "rules": [
+  {
+   "action": 12,
+   "condition": {
+    "near_table": "yes",
+    "stone": "4+"
+   },
+   "exceptions": [
+    [
+     "wood",
+     "0"
+    ],
+    [
+     "stone_pickaxe",
+     "yes"
+    ]
+   ]
+  },
+  {
+   "action": 11,
+   "condition": {
+    "near_table": "yes",
+    "wood_pickaxe": "no"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 5,
+   "condition": {
+    "front": "tree"
+   },
+   "exceptions": [
+    [
+     "near_table",
+     "yes"
+    ],
+    [
+     "energy",
+     "low"
+    ]
+   ]
+  },
+  {
+   "action": 13,
+   "condition": {
+    "coal": "1+",
+    "diamond": "0",
+    "iron": "1+",
+    "iron_pickaxe": "no",
+    "near_furnace": "yes",
+    "near_table": "yes",
+    "stone": "0",
+    "wood": "1"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 5,
+   "condition": {
+    "front": "tree"
+   },
+   "exceptions": [
+    [
+     "zombie_visible",
+     "yes"
+    ],
+    [
+     "skeleton_visible",
+     "yes"
+    ]
+   ]
+  },
+  {
+   "action": 5,
+   "condition": {
+    "front": "cow"
+   },
+   "exceptions": [
+    [
+     "zombie_visible",
+     "yes"
+    ],
+    [
+     "skeleton_visible",
+     "yes"
+    ]
+   ]
+  },
+  {
+   "action": 2,
+   "condition": {
+    "front": "path",
+    "near_table": "no",
+    "wood": "2+",
+    "wood_pickaxe": "no"
+   },
+   "exceptions": [
+    [
+     "lava_visible",
+     "yes"
+    ],
+    [
+     "zombie_visible",
+     "yes"
+    ]
+   ]
+  },
+  {
+   "action": 4,
+   "condition": {
+    "front": "path",
+    "iron_pickaxe": "no",
+    "iron_sword": "no",
+    "near_table": "no",
+    "stone_pickaxe": "no",
+    "stone_sword": "no",
+    "table_dir": "down",
+    "table_dist": "near",
+    "table_visible": "yes",
+    "wood": "2+",
+    "wood_pickaxe": "no",
+    "wood_sword": "no"
+   },
+   "exceptions": [
+    [
+     "lava_visible",
+     "yes"
+    ]
+   ]
+  },
+  {
+   "action": 5,
+   "condition": {
+    "front": "stone",
+    "wood_pickaxe": "yes"
+   },
+   "exceptions": [
+    [
+     "stone",
+     "4+"
+    ],
+    [
+     "near_table",
+     "yes"
+    ]
+   ]
+  },
+  {
+   "action": 11,
+   "condition": {
+    "iron_pickaxe": "no",
+    "near_table": "yes",
+    "stone_pickaxe": "no",
+    "wood": "2+",
+    "wood_pickaxe": "no"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "front": "grass",
+    "tree_dir": "right",
+    "tree_dist": "adjacent",
+    "tree_visible": "yes"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 5,
+   "condition": {
+    "drink": "low",
+    "front": "water"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 4,
+   "condition": {
+    "tree_dir": "down",
+    "tree_dist": "adjacent",
+    "tree_visible": "yes"
+   },
+   "exceptions": [
+    [
+     "lava_visible",
+     "yes"
+    ],
+    [
+     "lava_dir",
+     "down"
+    ]
+   ]
+  },
+  {
+   "action": 12,
+   "condition": {
+    "iron_pickaxe": "no",
+    "near_table": "yes",
+    "stone": "4+",
+    "stone_pickaxe": "no",
+    "wood": "2+"
+   },
+   "exceptions": [
+    [
+     "zombie_dist",
+     "adjacent"
+    ],
+    [
+     "skeleton_dist",
+     "adjacent"
+    ]
+   ]
+  },
+  {
+   "action": 4,
+   "condition": {
+    "front": "grass",
+    "tree_dir": "down",
+    "tree_visible": "yes"
+   },
+   "exceptions": [
+    [
+     "zombie_dist",
+     "adjacent"
+    ],
+    [
+     "lava_dist",
+     "adjacent"
+    ]
+   ]
+  },
+  {
+   "action": 11,
+   "condition": {
+    "daylight": "day",
+    "near_table": "yes"
+   },
+   "exceptions": [
+    [
+     "wood",
+     "0"
+    ],
+    [
+     "wood_pickaxe",
+     "yes"
+    ]
+   ]
+  },
+  {
+   "action": 5,
+   "condition": {
+    "done_collect_drink": "no",
+    "front": "water"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "facing": "left",
+    "front": "grass",
+    "iron_pickaxe": "no",
+    "stone_pickaxe": "no",
+    "tree_dir": "right",
+    "tree_visible": "yes",
+    "wood": "0",
+    "wood_pickaxe": "no"
+   },
+   "exceptions": [
+    [
+     "cow_dist",
+     "adjacent"
+    ],
+    [
+     "zombie_dist",
+     "adjacent"
+    ]
+   ]
+  },
+  {
+   "action": 8,
+   "condition": {
+    "done_place_table": "no",
+    "facing": "up",
+    "front": "grass",
+    "near_table": "no",
+    "wood": "2+"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 11,
+   "condition": {
+    "near_table": "yes",
+    "wood": "2+",
+    "wood_pickaxe": "no"
+   },
+   "exceptions": [
+    [
+     "drink",
+     "low"
+    ]
+   ]
+  },
+  {
+   "action": 2,
+   "condition": {
+    "cow_dir": "right",
+    "cow_visible": "yes",
+    "facing": "right",
+    "food": "low",
+    "front": "grass"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 8,
+   "condition": {
+    "daylight": "day",
+    "done_place_table": "no",
+    "front": "grass",
+    "near_table": "no",
+    "wood": "2+"
+   },
+   "exceptions": [
+    [
+     "energy",
+     "low"
+    ],
+    [
+     "zombie_visible",
+     "yes"
+    ]
+   ]
+  },
+  {
+   "action": 2,
+   "condition": {
+    "coal": "0",
+    "diamond": "0",
+    "drink": "low",
+    "energy": "high",
+    "food": "high",
+    "front": "grass",
+    "health": "low",
+    "iron": "0",
+    "iron_pickaxe": "no",
+    "iron_sword": "no",
+    "sapling": "0",
+    "stone": "0",
+    "stone_pickaxe": "no",
+    "stone_sword": "no",
+    "tree_dir": "right",
+    "tree_dist": "far",
+    "tree_visible": "yes",
+    "wood": "2+",
+    "wood_pickaxe": "no",
+    "wood_sword": "no"
+   },
+   "exceptions": [
+    [
+     "zombie_visible",
+     "yes"
+    ],
+    [
+     "lava_visible",
+     "yes"
+    ]
+   ]
+  },
+  {
+   "action": 2,
+   "condition": {
+    "cow_dir": "right",
+    "cow_dist": "near",
+    "cow_visible": "yes",
+    "daylight": "day",
+    "facing": "right",
+    "front": "grass"
+   },
+   "exceptions": []
+  }
+ ],
+ "self_check_status": {
+  "refined": 13,
+  "unchecked_kept": 12,
+  "withdrawn": 2
+ },
+ "source_replies_sha256": {
+  "refine_v2": "40d44838e832f740c7a9e7bd16052016c7d7b1db3ac2d25ac004c42525b8991b"
+ },
+ "study": "crafter_rules_v3_20261001",
+ "task": "crafter"
+}

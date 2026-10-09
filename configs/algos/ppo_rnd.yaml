@@ -1,0 +1,20 @@
+# PPO + RND hyperparameters. Inherits the PPO settings and adds the
+# intrinsic-reward knobs. Consumed by algos/ppo_rnd.py.
+algo: ppo_rnd
+
+learning_rate: 0.00025
+num_envs: 8
+num_steps: 128
+gamma: 0.99            # Discount for the extrinsic value head.
+gae_lambda: 0.95
+num_minibatches: 4
+update_epochs: 4
+clip_coef: 0.2
+ent_coef: 0.01
+vf_coef: 0.5
+
+# RND-specific. The intrinsic stream is usually non-episodic with its
+# own discount; the coefficient weights novelty against task reward.
+int_gamma: 0.99
+int_coef: 1.0
+ext_coef: 2.0

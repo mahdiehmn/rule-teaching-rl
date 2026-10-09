@@ -1,0 +1,2 @@
+# Cluster launch scripts must retain Unix shebangs on Windows checkouts.
+*.sh text eol=lf

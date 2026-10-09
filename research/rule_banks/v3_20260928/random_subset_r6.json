@@ -1,0 +1,204 @@
+{
+ "cost": {
+  "consult": {
+   "calls": 36,
+   "completed": 36,
+   "dollars": 0.063001
+  }
+ },
+ "mode": "scoped",
+ "model": "gpt-5-mini-2025-08-07",
+ "observer": "doorkey_v3",
+ "raw_rule_indices": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  6,
+  7,
+  9,
+  15,
+  16,
+  17,
+  18,
+  20,
+  22,
+  24,
+  25
+ ],
+ "rules": [
+  {
+   "action": 2,
+   "condition": {
+    "carrying": "nothing",
+    "front": "empty",
+    "key_ahead": "ahead",
+    "key_visible": "yes"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 5,
+   "condition": {
+    "carrying": "key",
+    "door_ahead": "ahead",
+    "door_state": "locked",
+    "door_visible": "yes",
+    "front": "door_locked"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "carrying": "key",
+    "front": "goal"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "carrying": "key",
+    "front": "empty"
+   },
+   "exceptions": [
+    [
+     "door_state",
+     "locked"
+    ],
+    [
+     "door_state",
+     "closed"
+    ]
+   ]
+  },
+  {
+   "action": 2,
+   "condition": {
+    "carrying": "key",
+    "front": "empty"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 5,
+   "condition": {
+    "carrying": "key",
+    "door_ahead": "ahead",
+    "door_fwd": "1",
+    "door_right": "0",
+    "door_side": "center",
+    "door_state": "locked",
+    "door_visible": "yes",
+    "front": "door_locked"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 1,
+   "condition": {
+    "carrying": "key",
+    "front": "wall"
+   },
+   "exceptions": [
+    [
+     "goal_visible",
+     "yes"
+    ],
+    [
+     "door_visible",
+     "yes"
+    ]
+   ]
+  },
+  {
+   "action": 3,
+   "condition": {
+    "carrying": "nothing",
+    "front": "key"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "carrying": "nothing",
+    "front": "empty",
+    "key_ahead": "ahead",
+    "key_side": "right",
+    "key_visible": "yes"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "door_ahead": "ahead",
+    "door_visible": "yes",
+    "front": "empty"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "carrying": "nothing",
+    "front": "empty",
+    "key_ahead": "ahead",
+    "key_side": "left",
+    "key_visible": "yes"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 5,
+   "condition": {
+    "carrying": "key",
+    "door_ahead": "ahead",
+    "door_state": "locked",
+    "door_visible": "yes",
+    "front": "door_locked"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 3,
+   "condition": {
+    "carrying": "nothing",
+    "front": "key"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "front": "empty"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "carrying": "key",
+    "front": "empty"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "goal_ahead": "ahead",
+    "goal_visible": "yes"
+   },
+   "exceptions": []
+  }
+ ],
+ "source_replies_sha256": {
+  "blind": "07d0cfcbf478fdbb0655e659534b80d32fb644b2e5fe2fea68a420bbd970c599",
+  "consult": "8b161df3db6fe78e125d7dc3aec19e7c18bfacdfa35059dbc65b1356b61d6283"
+ },
+ "study": "confirm_banks_20260928",
+ "task": "doorkey_8x8"
+}

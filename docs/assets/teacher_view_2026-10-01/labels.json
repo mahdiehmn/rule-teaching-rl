@@ -1,0 +1,96 @@
+{
+ "DoorKey-8x8": {
+  "research/rule_banks/v3_20260928/blind_strict.json": {
+   "states": 475,
+   "student_view": {
+    "labelled": 231,
+    "coverage": 0.4863157894736842,
+    "precision": 0.9653679653679653,
+    "ambiguous_share": 0.0
+   },
+   "teacher_view": {
+    "labelled": 313,
+    "coverage": 0.6589473684210526,
+    "precision": 0.8434504792332268,
+    "ambiguous_share": 0.006389776357827476
+   },
+   "teacher_view_vs_student_view": {
+    "only_teacher": 120,
+    "only_teacher_precision": 0.6583333333333333,
+    "only_student": 38,
+    "changed": 0,
+    "same": 193
+   }
+  }
+ },
+ "MultiRoom-N6": {
+  "research/rule_banks/multiroom_20260928/scoped.json": {
+   "states": 480,
+   "student_view": {
+    "labelled": 387,
+    "coverage": 0.80625,
+    "precision": 0.7571059431524548,
+    "ambiguous_share": 0.0
+   },
+   "teacher_view": {
+    "labelled": 410,
+    "coverage": 0.8541666666666666,
+    "precision": 0.7341463414634146,
+    "ambiguous_share": 0.007317073170731708
+   },
+   "teacher_view_vs_student_view": {
+    "only_teacher": 35,
+    "only_teacher_precision": 0.5142857142857142,
+    "only_student": 12,
+    "changed": 0,
+    "same": 375
+   }
+  },
+  "research/rule_banks/multiroom_20260928/blind_strict.json": {
+   "states": 480,
+   "student_view": {
+    "labelled": 96,
+    "coverage": 0.2,
+    "precision": 0.96875,
+    "ambiguous_share": 0.0
+   },
+   "teacher_view": {
+    "labelled": 95,
+    "coverage": 0.19791666666666666,
+    "precision": 0.9368421052631579,
+    "ambiguous_share": 0.0
+   },
+   "teacher_view_vs_student_view": {
+    "only_teacher": 5,
+    "only_teacher_precision": 0.4,
+    "only_student": 6,
+    "changed": 0,
+    "same": 90
+   }
+  }
+ },
+ "KeyCorridor-S3R3": {
+  "research/rule_banks/keycorridor_mem_20260929/self_checked_pooled_valid.json": {
+   "states": 476,
+   "student_view": {
+    "labelled": 267,
+    "coverage": 0.5609243697478992,
+    "precision": 0.7640449438202247,
+    "ambiguous_share": 0.0
+   },
+   "teacher_view": {
+    "labelled": 250,
+    "coverage": 0.5252100840336135,
+    "precision": 0.744,
+    "ambiguous_share": 0.0
+   },
+   "teacher_view_vs_student_view": {
+    "only_teacher": 34,
+    "only_teacher_precision": 0.7352941176470589,
+    "only_student": 51,
+    "changed": 0,
+    "same": 216
+   }
+  }
+ }
+}

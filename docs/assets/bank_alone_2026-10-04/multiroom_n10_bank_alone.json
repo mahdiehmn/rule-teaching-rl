@@ -1,0 +1,25 @@
+{
+ "task": "multiroom_n10",
+ "seed0": 35000000,
+ "episodes": 100,
+ "rows": {
+  "plain PPO bank (scoped, 32 rules)": {
+   "success": 0.0,
+   "episodes": 100,
+   "labelled_steps": 0.5287,
+   "bank": "research/rule_banks/multiroom_20260928/scoped.json"
+  },
+  "Count-PPO bank (blind strict, 7 rules)": {
+   "success": 0.0,
+   "episodes": 100,
+   "labelled_steps": 0.01005,
+   "bank": "research/rule_banks/multiroom_20260928/blind_strict.json"
+  },
+  "random useful actions": {
+   "success": 0.0,
+   "episodes": 100,
+   "labelled_steps": 0.0,
+   "bank": null
+  }
+ }
+}

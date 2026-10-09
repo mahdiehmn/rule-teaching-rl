@@ -1,0 +1,28 @@
+\section{Cohorts and Evaluation}\label{app:section4_details}
+
+The original source confirmation uses replicates 30--39, while the fresh
+source replication and online-advice comparison use 80--89. The
+controller comparisons pair with the original confirmation cohort. The
+advice-quantity control and larger-task experiments use their own
+cohorts. The original Crafter results use training seeds 31--40; the
+added training replication uses 141--150. Reusing a replication count or
+an evaluation panel does not make independently trained policies the
+same cohort.
+
+MiniGrid's primary AUC uses regular evaluation checkpoints and is
+normalized by the measured time span. Extra early diagnostics, including
+initialization, are plotted without recomputing that primary statistic.
+Each MiniGrid evaluation has 50 episodes. Greedy action selection is the
+primary MiniGrid protocol in the main paper; sampled-action evaluations
+are secondary displays, including the main controller plot. Crafter uses sampled policy
+actions for the reported achievement metrics. Training seeds are the
+replication unit, and confidence intervals on paired differences are
+unadjusted. Holm correction is applied to \(p\)-values within each
+declared family. The original six-test source family includes the
+KeyCorridor comparisons with the bank built without the progress fact;
+the selected KeyCorridor results belong to a separate four-test family. The source-study tables
+preserve these declared criteria. The fresh source replication uses its
+own six-test family; A and B comparisons use separate six-test families.
+The no-harm margin used in the experiment protocols is \ensuremath{-}0.05 AUC;
+satisfying that margin does not establish equivalence.
+

@@ -1,0 +1,191 @@
+{
+ "first_consultations": 12,
+ "llm_calls": {
+  "consultations": 12
+ },
+ "mode": "scoped",
+ "model": "gpt-5-mini-2025-08-07",
+ "observer": "keycorridor_v1",
+ "rules": [
+  {
+   "action": 5,
+   "condition": {
+    "door_state": "closed",
+    "door_visible": "yes",
+    "front": "door_closed"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 3,
+   "condition": {
+    "carrying": "nothing",
+    "front": "key"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "ball_ahead": "ahead",
+    "ball_fwd": "2",
+    "ball_right": "0",
+    "ball_side": "center",
+    "ball_visible": "yes",
+    "carrying": "nothing",
+    "door_ahead": "ahead",
+    "door_fwd": "1",
+    "door_right": "0",
+    "door_side": "center",
+    "door_state": "open",
+    "door_visible": "yes",
+    "front": "door_open",
+    "locked_door_visible": "no"
+   },
+   "exceptions": [
+    [
+     "locked_door_visible",
+     "yes"
+    ]
+   ]
+  },
+  {
+   "action": 5,
+   "condition": {
+    "carrying": "key",
+    "door_ahead": "ahead",
+    "door_fwd": "1",
+    "door_right": "-1",
+    "door_side": "left",
+    "door_state": "closed",
+    "door_visible": "yes",
+    "front": "door_closed"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "carrying": "key",
+    "front": "empty",
+    "locked_door_ahead": "ahead",
+    "locked_door_visible": "yes"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 1,
+   "condition": {
+    "ball_side": "right",
+    "ball_visible": "yes",
+    "carrying": "key",
+    "front": "wall"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "ball_visible": "no",
+    "carrying": "nothing",
+    "door_ahead": "beside",
+    "door_fwd": "0",
+    "door_right": "-1",
+    "door_side": "left",
+    "door_state": "open",
+    "door_visible": "yes",
+    "front": "door_open",
+    "key_ahead": "ahead",
+    "key_right": "0",
+    "key_side": "center",
+    "key_visible": "yes",
+    "locked_door_ahead": "beside",
+    "locked_door_fwd": "0",
+    "locked_door_right": "-3",
+    "locked_door_side": "left",
+    "locked_door_visible": "yes"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "carrying": "key",
+    "front": "empty",
+    "locked_door_ahead": "ahead",
+    "locked_door_fwd": "2",
+    "locked_door_visible": "yes"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 4,
+   "condition": {
+    "ball_ahead": "ahead",
+    "ball_fwd": "2",
+    "ball_right": "0",
+    "ball_side": "center",
+    "ball_visible": "yes",
+    "carrying": "key",
+    "door_ahead": "ahead",
+    "door_fwd": "1",
+    "door_right": "0",
+    "door_side": "center",
+    "door_state": "open",
+    "door_visible": "yes",
+    "front": "door_open",
+    "key_visible": "no",
+    "locked_door_visible": "no"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 1,
+   "condition": {
+    "ball_visible": "no",
+    "carrying": "nothing",
+    "door_ahead": "ahead",
+    "door_fwd": "1",
+    "door_right": "0",
+    "door_side": "center",
+    "door_state": "closed",
+    "door_visible": "yes",
+    "front": "door_closed",
+    "key_visible": "no",
+    "locked_door_ahead": "ahead",
+    "locked_door_fwd": "1",
+    "locked_door_right": "-2",
+    "locked_door_side": "left",
+    "locked_door_visible": "yes"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 4,
+   "condition": {
+    "ball_ahead": "ahead",
+    "ball_fwd": "2",
+    "ball_right": "0",
+    "ball_side": "center",
+    "ball_visible": "yes",
+    "carrying": "key",
+    "door_ahead": "ahead",
+    "door_fwd": "1",
+    "door_right": "0",
+    "door_side": "center",
+    "door_state": "open",
+    "door_visible": "yes",
+    "front": "door_open",
+    "key_visible": "no",
+    "locked_door_visible": "no"
+   },
+   "exceptions": []
+  }
+ ],
+ "source_replies_sha256": {
+  "blind": "eeb7a6f859121d2e0e0cb0787c586f4efc59dac9ce5f5338678ad53f1009664f",
+  "consult": "f31342cac40c1e081df603176b6f5ff590605c0488dfba0fd92513fac950faee"
+ },
+ "study": "confirm_banks_20260928",
+ "task": "keycorridor_s3r3"
+}

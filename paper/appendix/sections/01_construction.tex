@@ -1,0 +1,159 @@
+\section{Construction and Implementation}
+\label{app:construction}
+
+This appendix records the predicate features, bank construction and
+checking choices, and training details used by the method.
+
+\begin{table}[t]
+\centering\small
+\caption{Frozen banks used in the reported experiments. Each originates
+from 36 generation consultations; checking requests are additional.
+The two MultiRoom banks share the same initial consultations.}
+\label{tab:banks}
+\begin{tabular}{@{}llllr@{}}
+\toprule
+Task & Student & Check & Action filter & Rules\\
+\midrule
+DoorKey & Both & Blind & None & 16\\
+MultiRoom & PPO & None & None & 32\\
+ & Count-PPO & Blind & None & 7\\
+KeyCorridor & Both & Self-check & Before freezing & 28\\
+Crafter & Both & Self-check & Runtime & 24\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Predicate Features and Progress}
+\label{app:predicate_features}
+
+The final vocabularies are frozen before evaluated training. MiniGrid observation predicates describe the front
+cell, carried object, visibility of task-relevant object types, coarse
+direction and offsets to their closest visible instances, and visible
+door states. The carried object is encoded at the agent's cell in the
+symbolic observation. An unseen object's direction and offsets are
+$\mathsf{unknown}$.
+Crafter predicates describe the facing cell and direction, daylight,
+nearby table and furnace, distance and first move towards the closest
+visible instance of each of 13 object types, and binned inventory,
+tools and vital statistics.
+Rule conditions use values from these finite domains. An omitted
+condition imposes no constraint; $\mathsf{unknown}$ is a runtime
+information state, not a value requested by a generated rule.
+
+KeyCorridor's executor computes \texttt{door\_unlocked} by scanning
+the simulator grid for remaining locked doors. In the evaluated task,
+the student is the only agent that can unlock the door, and unlocking
+cannot be reversed. A separate software check reconstructed this flag
+from executed actions and local observations and agreed with the
+grid-derived flag at every compared state. That reconstruction was
+not used by the training implementation and does not establish what
+the learned policy remembers. Crafter's executor reads its 22 progress
+facts from the game's episodic achievement counters. Neither set of
+progress facts is added to the policy input.
+
+\subsection{Generation and Checking}
+\label{app:bank_construction_details}
+
+\paragraph{Generation states.}
+MiniGrid uses 36 distinct construction layouts and one example state
+per layout. DoorKey allocates 12 examples to each phase: key on the
+floor, key in hand, and door open, with the agent placed at a randomly
+chosen reachable cell. MultiRoom and KeyCorridor allocate 12 examples
+to each of the early, middle and late thirds of a planner trajectory.
+A short random walk is added with probability $1/2$ after reaching
+the sampled point.
+The planner supplies states, not training action targets.
+Crafter's initial examples use short random walks and constructed
+changes to inventories and crafting stations. Initial calls each
+contain a single prompt and no previous model response. We use
+\texttt{gpt-5-mini-2025-08-07}, low reasoning effort and structured output.
+The rule proposals from these 36 calls are collected into one initial
+bank. The count of 36 is a fixed generation budget, not an established
+minimum or optimum. Development compares whole-bank variants; it
+does not train one student for each individual proposed rule.
+
+\paragraph{Checking states.}
+MiniGrid checking pools contain additional states from the layouts
+used for generation, so they need not be the original consultation
+states. A checking request contains up to five states where the rule
+applies. Blind checks ask for an action at each state without showing
+the rule. Self-checks show the rule and can revise its conditions,
+exceptions or action, or withdraw it. Their treatment of rules with
+no applicable states is specified in the main method.
+Crafter's later checking pools also contain states visited by
+unadvised development policies and random play. Its selected bank
+rechecks earlier self-checked rules using the extended progress
+vocabulary. Actions with the same measured effect as a no-op are
+flagged for the LLM using separate simulator copies.
+
+\paragraph{Pooling and action checks.}
+In KeyCorridor, checks for identical proposed rules are pooled. An
+original rule remains unchanged only if every copy's check leaves it
+unchanged; otherwise, distinct refinements are retained and withdrawn
+copies contribute no rule.
+Fixed action checks are then compiled into rule conditions. For
+example, \texttt{pickup} permits a key or ball in front with empty
+hands, whereas \texttt{drop} permits a carried key with empty floor
+in front. A missing condition is added by expanding into allowed
+cases; incompatible cases are discarded. These are specified action
+restrictions, not a complete guarantee that every retained action
+changes the environment. Crafter applies its filter at runtime using
+its action requirements and recipe table, excluding \texttt{noop}.
+
+\paragraph{Development selection.}
+DoorKey and MultiRoom compare checked and unchecked candidate banks
+using mean teacher-free learning-curve area on development runs,
+separately for PPO and Count-PPO. The selection procedure chooses
+no advice if neither candidate improves on its development control.
+The chosen MultiRoom variants are the unchecked bank for PPO and
+the checked subset for Count-PPO. These choices precede the reported
+evaluation runs. KeyCorridor and Crafter additionally use direct bank
+execution with random actions when the executor abstains; Crafter
+includes development learning runs. MiniGrid optimal-action planners
+provide held-out development label-precision diagnostics for choosing
+checking variants. Their actions never enter a frozen bank or the
+student's training targets.
+
+\subsection{Learning Details}
+\label{app:learning_details}
+
+\paragraph{PPO objective.}
+The ordinary PPO loss~\citep{schulman2017ppo} is
+\begin{align}
+\mathcal{L}_{\mathrm{PPO}}={}&-\hat{\mathbb{E}}_{\mathcal{M}}
+\bigl[\min\bigl(\rho_t\hat{A}_t,
+\operatorname{clip}(\rho_t,1-\epsilon,1+\epsilon)\hat{A}_t\bigr)\bigr]
+\nonumber\\
+&+c_V\mathcal{L}_V-c_H\hat{\mathbb{E}}_{\mathcal{M}}
+\bigl[\mathcal{H}(\pi_\theta(\cdot\mid x_t))\bigr],
+\label{eq:ppo}
+\end{align}
+where $\rho_t=\pi_\theta(a_t\mid x_t)/
+\pi_{\theta_{\mathrm{old}}}(a_t\mid x_t)$,
+$\hat{A}_t$ is an advantage estimate, $\mathcal{L}_V$ the value loss,
+and $\mathcal{H}$ policy entropy. Every executed action is sampled
+by the student, so this remains the ordinary on-policy ratio.
+
+\paragraph{Count-PPO.}
+Counts reset each episode. In MiniGrid, they index the local
+$7\times7$ observation. The intrinsic bonus is normalized using
+a running scale and has a separate value head; its advantage is
+combined with the task advantage as
+$\hat{A}_t=\hat{A}^{\mathrm{task}}_t+
+\beta\hat{A}^{\mathrm{int}}_t$.
+Both value losses enter $\mathcal{L}_V$.
+In Crafter, counts index the $9\times7$ grid observation excluding
+inventory, and the bonus is added to the reward of a single value
+head. Evaluation reports task metrics without a count bonus.
+
+\paragraph{Schedule and algorithm.}
+$\lambda(\cdot)$ denotes the schedule function;
+$\lambda_k=\lambda(\tau_k)$ is its value for rollout iteration $k$,
+where $\tau_k$ is the completed training fraction at that iteration's start.
+The initial weight and floor, $\lambda_0$ and $\lambda_{\min}$, are
+fixed hyperparameters. Algorithm~\ref{alg:training} uses $\lambda_k$
+for both target generation and the minibatch objective.
+When advice is disabled, $y_t=\bot$ and $m_t=0$; only transitions
+with $m_t=1$ enter the advice loss.
+
+\input{sections/algorithm_training}

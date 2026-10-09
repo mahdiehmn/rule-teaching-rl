@@ -1,0 +1,517 @@
+{
+ "added_predicates": [
+  "door_unlocked"
+ ],
+ "cost": {
+  "consult": {
+   "calls": 36,
+   "dollars": 0.082431
+  },
+  "refine": {
+   "calls": 29,
+   "dollars": 0.085039
+  }
+ },
+ "mode": "scoped",
+ "model": "gpt-5-mini-2025-08-07",
+ "observer": "keycorridor_mem_v1",
+ "prompt_version": "scoped_rule_kc_mem_v1",
+ "rules": [
+  {
+   "action": 5,
+   "condition": {
+    "door_state": "closed",
+    "door_visible": "yes",
+    "front": "door_closed",
+    "locked_door_visible": "no"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 3,
+   "condition": {
+    "carrying": "nothing",
+    "front": "key",
+    "key_ahead": "ahead",
+    "key_fwd": "1",
+    "key_right": "0",
+    "key_side": "center",
+    "key_visible": "yes"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "ball_ahead": "ahead",
+    "ball_fwd": "2",
+    "ball_right": "0",
+    "ball_side": "center",
+    "ball_visible": "yes",
+    "carrying": "nothing",
+    "door_ahead": "ahead",
+    "door_fwd": "1",
+    "door_right": "0",
+    "door_side": "center",
+    "door_state": "open",
+    "door_unlocked": "yes",
+    "door_visible": "yes",
+    "front": "door_open",
+    "key_visible": "yes",
+    "locked_door_visible": "no"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "carrying": "key",
+    "front": "empty",
+    "locked_door_visible": "no"
+   },
+   "exceptions": [
+    [
+     "ball_visible",
+     "yes"
+    ]
+   ]
+  },
+  {
+   "action": 2,
+   "condition": {
+    "ball_visible": "no",
+    "carrying": "key",
+    "front": "empty",
+    "locked_door_visible": "no"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "carrying": "key",
+    "front": "empty",
+    "locked_door_ahead": "ahead",
+    "locked_door_visible": "yes"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 1,
+   "condition": {
+    "ball_ahead": "beside",
+    "ball_fwd": "0",
+    "ball_right": "2",
+    "ball_side": "right",
+    "ball_visible": "yes",
+    "carrying": "key",
+    "door_unlocked": "yes",
+    "front": "wall"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "carrying": "nothing",
+    "front": "door_open",
+    "key_ahead": "ahead",
+    "key_visible": "yes"
+   },
+   "exceptions": [
+    [
+     "front",
+     "wall"
+    ],
+    [
+     "front",
+     "door_locked"
+    ]
+   ]
+  },
+  {
+   "action": 2,
+   "condition": {
+    "carrying": "nothing",
+    "front": "empty",
+    "key_ahead": "ahead",
+    "key_visible": "yes"
+   },
+   "exceptions": [
+    [
+     "front",
+     "wall"
+    ],
+    [
+     "front",
+     "door_locked"
+    ]
+   ]
+  },
+  {
+   "action": 2,
+   "condition": {
+    "carrying": "key",
+    "door_unlocked": "no",
+    "front": "empty",
+    "locked_door_fwd": "2",
+    "locked_door_visible": "yes"
+   },
+   "exceptions": [
+    [
+     "front",
+     "wall"
+    ],
+    [
+     "front",
+     "door_closed"
+    ]
+   ]
+  },
+  {
+   "action": 2,
+   "condition": {
+    "ball_ahead": "ahead",
+    "ball_fwd": "2",
+    "ball_right": "0",
+    "ball_side": "center",
+    "ball_visible": "yes",
+    "carrying": "key",
+    "door_ahead": "ahead",
+    "door_fwd": "1",
+    "door_right": "0",
+    "door_side": "center",
+    "door_state": "open",
+    "door_unlocked": "yes",
+    "door_visible": "yes",
+    "front": "door_open",
+    "key_ahead": "ahead",
+    "key_fwd": "0",
+    "key_right": "0",
+    "key_side": "center",
+    "key_visible": "no",
+    "locked_door_ahead": "ahead",
+    "locked_door_fwd": "0",
+    "locked_door_right": "0",
+    "locked_door_side": "center",
+    "locked_door_visible": "no"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 3,
+   "condition": {
+    "carrying": "nothing",
+    "front": "key"
+   },
+   "exceptions": [
+    [
+     "locked_door_visible",
+     "no"
+    ],
+    [
+     "door_unlocked",
+     "yes"
+    ]
+   ]
+  },
+  {
+   "action": 3,
+   "condition": {
+    "ball_visible": "no",
+    "carrying": "nothing",
+    "door_ahead": "ahead",
+    "door_fwd": "1",
+    "door_right": "-1",
+    "door_side": "left",
+    "door_state": "locked",
+    "door_unlocked": "no",
+    "door_visible": "yes",
+    "front": "key",
+    "key_ahead": "ahead",
+    "key_fwd": "1",
+    "key_right": "0",
+    "key_side": "center",
+    "key_visible": "yes",
+    "locked_door_ahead": "ahead",
+    "locked_door_fwd": "1",
+    "locked_door_right": "-1",
+    "locked_door_side": "left",
+    "locked_door_visible": "yes"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 0,
+   "condition": {
+    "carrying": "nothing",
+    "door_ahead": "ahead",
+    "door_fwd": "1",
+    "door_right": "-1",
+    "door_side": "left",
+    "door_state": "closed",
+    "door_visible": "yes",
+    "front": "wall"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "ball_visible": "no",
+    "carrying": "key",
+    "door_ahead": "ahead",
+    "door_fwd": "2",
+    "door_right": "0",
+    "door_side": "center",
+    "door_state": "locked",
+    "door_unlocked": "no",
+    "door_visible": "yes",
+    "front": "empty",
+    "key_visible": "no",
+    "locked_door_ahead": "ahead",
+    "locked_door_fwd": "2",
+    "locked_door_right": "0",
+    "locked_door_side": "center",
+    "locked_door_visible": "yes"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 5,
+   "condition": {
+    "ball_visible": "no",
+    "carrying": "key",
+    "door_ahead": "ahead",
+    "door_fwd": "1",
+    "door_right": "0",
+    "door_side": "center",
+    "door_state": "locked",
+    "door_unlocked": "no",
+    "door_visible": "yes",
+    "front": "door_locked",
+    "key_ahead": "ahead",
+    "key_fwd": "0",
+    "key_right": "0",
+    "key_side": "center",
+    "key_visible": "no",
+    "locked_door_ahead": "ahead",
+    "locked_door_fwd": "1",
+    "locked_door_right": "0",
+    "locked_door_side": "center",
+    "locked_door_visible": "yes"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 0,
+   "condition": {
+    "ball_visible": "no",
+    "carrying": "nothing",
+    "door_unlocked": "no",
+    "front": "wall",
+    "key_visible": "no",
+    "locked_door_side": "right",
+    "locked_door_visible": "yes"
+   },
+   "exceptions": [
+    [
+     "key_visible",
+     "yes"
+    ],
+    [
+     "carrying",
+     "key"
+    ]
+   ]
+  },
+  {
+   "action": 0,
+   "condition": {
+    "carrying": "key",
+    "front": "wall",
+    "locked_door_side": "left",
+    "locked_door_visible": "yes"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 0,
+   "condition": {
+    "carrying": "key",
+    "door_ahead": "beside",
+    "door_fwd": "0",
+    "door_right": "-1",
+    "door_side": "left",
+    "door_state": "locked",
+    "door_unlocked": "no",
+    "key_visible": "no",
+    "locked_door_ahead": "beside",
+    "locked_door_fwd": "0",
+    "locked_door_right": "-1",
+    "locked_door_side": "left",
+    "locked_door_visible": "yes"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 1,
+   "condition": {
+    "ball_visible": "no",
+    "carrying": "nothing",
+    "door_ahead": "ahead",
+    "door_fwd": "1",
+    "door_right": "-2",
+    "door_side": "left",
+    "door_state": "locked",
+    "door_unlocked": "no",
+    "door_visible": "yes",
+    "front": "wall",
+    "key_visible": "no",
+    "locked_door_ahead": "ahead",
+    "locked_door_fwd": "1",
+    "locked_door_right": "-2",
+    "locked_door_side": "left",
+    "locked_door_visible": "yes"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 3,
+   "condition": {
+    "carrying": "nothing",
+    "front": "key"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 5,
+   "condition": {
+    "carrying": "key",
+    "door_unlocked": "no",
+    "front": "door_locked",
+    "locked_door_visible": "yes"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 3,
+   "condition": {
+    "ball_ahead": "ahead",
+    "ball_fwd": "1",
+    "ball_right": "0",
+    "ball_side": "center",
+    "ball_visible": "yes",
+    "carrying": "nothing",
+    "door_unlocked": "yes",
+    "front": "ball"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "ball_visible": "no",
+    "carrying": "key",
+    "door_ahead": "ahead",
+    "door_fwd": "2",
+    "door_right": "0",
+    "door_side": "center",
+    "door_state": "closed",
+    "door_unlocked": "no",
+    "door_visible": "yes",
+    "front": "empty",
+    "key_visible": "no",
+    "locked_door_visible": "no"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 5,
+   "condition": {
+    "carrying": "nothing",
+    "door_ahead": "ahead",
+    "door_fwd": "1",
+    "door_right": "0",
+    "door_side": "center",
+    "door_state": "closed",
+    "door_visible": "yes",
+    "front": "door_closed",
+    "key_visible": "no",
+    "locked_door_visible": "no"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 0,
+   "condition": {
+    "door_side": "left",
+    "door_visible": "yes",
+    "front": "wall"
+   },
+   "exceptions": [
+    [
+     "key_visible",
+     "yes"
+    ],
+    [
+     "locked_door_visible",
+     "yes"
+    ]
+   ]
+  },
+  {
+   "action": 3,
+   "condition": {
+    "carrying": "nothing",
+    "door_unlocked": "yes",
+    "front": "ball"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "ball_visible": "no",
+    "carrying": "nothing",
+    "door_ahead": "ahead",
+    "door_fwd": "1",
+    "door_right": "0",
+    "door_side": "center",
+    "door_state": "open",
+    "door_unlocked": "no",
+    "door_visible": "yes",
+    "front": "door_open",
+    "key_ahead": "ahead",
+    "key_fwd": "2",
+    "key_right": "0",
+    "key_side": "center",
+    "key_visible": "yes",
+    "locked_door_visible": "no"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 3,
+   "condition": {
+    "carrying": "nothing",
+    "front": "ball"
+   },
+   "exceptions": []
+  }
+ ],
+ "self_check_status": {
+  "copies_1": 25,
+  "copies_2": 3,
+  "kept": 13,
+  "replaced": 15
+ },
+ "source_replies_sha256": {
+  "blind": "48096d03f2b6e66227cb633f820c142c5178ced26331861d5cde80a80d81a91d",
+  "consult": "b40b5efc1f8d527f172054e75456a0a938e80acf82791cbeadd5945c65d3f7cb",
+  "refine": "ff2ffc072247b259ea6328fca3929962bfca0a2f7f6c685b0185023e0579f693"
+ },
+ "study": "conditional_rules_keycorridor_mem_20260929",
+ "task": "keycorridor_s3r3",
+ "transform": "valid_action_front_v1"
+}

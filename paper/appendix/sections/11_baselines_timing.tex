@@ -1,0 +1,53 @@
+\section{Fixed-Policy Baselines and Recorded Timing}
+\label{app:baselines_timing}
+\subsection{Random actions and direct bank execution}
+The source-task evaluations run the fixed bank as a policy, executing its
+target when available and choosing uniformly from the six non-\texttt{done}
+actions otherwise. A separate baseline uses those random actions at every
+step. Each source evaluation uses 200 episodes with seeds starting at
+35,000,000. These are episode-level diagnostics of a fixed artifact, not
+ten independent training runs. The student curves in the main paper are
+teacher-free evaluations from separate panels; the separate fixed-policy scores
+are not paired significance comparisons or learning curves.
+\begin{center}\small
+\begin{tabular}{@{}lrrr@{}}\toprule
+Task & Random actions & PPO bank alone & Count-PPO bank alone\\\midrule
+DoorKey-8 & 2.5\% & 66.0\% & 66.0\%\\
+MultiRoom-N6 & 0.0\% & 5.5\% & 0.0\%\\
+KeyCorridor-S3R3 & 0.5\% & 22.5\% & 22.5\%\\\bottomrule
+\end{tabular}\end{center}
+On larger maps, recorded 100-episode random-action success is 3\% on
+DoorKey-16 and zero on MultiRoom-N10 and KeyCorridor-S6R3. Random-action
+evaluations for S4R3 and S5R3 are not included in these records. Both
+MultiRoom-N10 banks have zero standalone successes on their 100-episode
+panel. The separate Crafter development diagnostic reports 2.60
+achievements for random actions and 3.55 for the action-filtered bank on
+20 worlds; this is not the students' held-out evaluation panel.
+
+\subsection{Recorded construction and training times}
+The regeneration journals provide an observed request window: earliest
+request start to latest request completion across consultation and blind
+checking. The per-request durations are also summed; concurrent calls
+make this sum longer than the elapsed window. The four uninterrupted banks
+have request windows of 1.17--1.59 minutes. These measurements exclude
+queueing, pre-request setup, development and manual recovery delays.
+Bank 2's original generation fails and is subsequently recovered; it is
+retained in the learning results but has no single uninterrupted window
+in this table. Each bank trains ten new PPO students to 4,999,168
+transitions on CPU. Their median recorded elapsed times are listed below.
+
+\begin{center}\small
+\begin{tabular}{@{}lrrr@{}}\toprule
+Bank & Request window (min) & Summed requests (min) & Median training (h)\\\midrule
+0 & 1.19 & 6.56 & 4.16 \\
+1 & 1.17 & 6.38 & 4.23 \\
+2 & interrupted & interrupted & 4.13 \\
+3 & 1.23 & 6.51 & 4.28 \\
+4 & 1.59 & 7.60 & 4.17 \\
+\bottomrule\end{tabular}\end{center}
+These are descriptive timings from the recorded execution environment,
+not a hardware-matched end-to-end speedup benchmark. They quantify one
+construction stage and subsequent student training separately. A bank can
+be reused across students; executor and auxiliary-loss computation still
+occur during training. The time comparison does not include all development
+or failed-bank exploration costs.

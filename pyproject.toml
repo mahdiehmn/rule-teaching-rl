@@ -1,0 +1,55 @@
+[build-system]
+requires = ['setuptools>=68']
+build-backend = 'setuptools.build_meta'
+
+[project]
+name = 'vlm-rl-bench'
+version = '0.1.0'
+description = 'A hard-exploration MiniGrid/BabyAI benchmark for comparing tabular Q-learning, deep RL, intrinsic-curiosity baselines, and VLM/LLM-guided agents on sample efficiency.'
+readme = 'README.md'
+requires-python = '>=3.11'
+authors = [{ name = 'mahdiehmn' }]
+
+# Runtime dependencies. Kept deliberately small: a cleanrl-style
+# single-file training loop only needs gymnasium + torch, the env
+# suite, a CLI parser, an experiment logger, and the OpenAI client
+# for the LLM/VLM teacher.
+dependencies = [
+    'gymnasium>=0.29',
+    'minigrid>=2.3',
+    'torch>=2.2',
+    'numpy>=1.26',
+    'tyro>=0.8',            # Typed CLI for the training scripts.
+    'wandb>=0.16',          # Experiment tracking and curves.
+    'tensorboard>=2.16',    # Local fallback logger.
+    'openai>=1.30',         # LLM / VLM teacher API client.
+    'python-dotenv>=1.0',   # Loads OPENAI_API_KEY from .env.
+    'jsonschema>=4.22',     # Validate compatible gateway teacher replies.
+    'matplotlib>=3.8',      # Seed-aggregated learning curves.
+    'scipy>=1.11',          # Paired seed intervals and hypothesis tests.
+]
+
+[project.optional-dependencies]
+# Developer tooling, not needed to run experiments.
+dev = [
+    'pytest>=8.0',
+    'ruff>=0.4',
+]
+
+# The repo uses a flat layout: each top-level directory is its own
+# import package and scripts are run from the repo root. List the
+# packages explicitly so setuptools does not try to auto-discover
+# and trip over results/ or scripts/.
+[tool.setuptools]
+packages = [
+    'advising',
+    'algos',
+    'envs',
+    'integration',
+    'monitoring',
+    'teachers',
+    'teachers.minigrid',
+]
+
+[tool.ruff]
+line-length = 79

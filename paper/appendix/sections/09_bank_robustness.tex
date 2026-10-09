@@ -1,0 +1,22 @@
+\section{Bank Regeneration and Aggregate Advice Rates}\label{sec:supp:bank_robustness}
+Five additional DoorKey banks are evaluated with ten paired PPO seeds each.
+Their mean AUC gains over no advice are .952, .821, .917, .727 and .723.
+All five are retained; four complete the original generation attempt and
+the fifth is recovered after a failed consultation. Recorded generation
+and checking costs total approximately \$0.54 including the failed attempt
+and recovery. This is an exploratory one-task, one-model study, not fifty
+independent bank-generation trials.
+
+The following rates are delivered labels divided by recorded executor
+consultations in the fresh cohort, pooled across ten seeds per setting.
+They measure aggregate non-abstention while advice is active, not coverage
+of the entire state space, coverage over time, or the fraction of all
+training transitions receiving labels.
+\begin{center}\begin{tabular}{@{}lrr@{}}\toprule
+Task & PPO & Count-PPO\\\midrule
+DoorKey & 50.5\% & 54.2\%\\
+MultiRoom & 86.6\% & 22.6\%\\
+KeyCorridor & 41.7\% & 47.5\%\\\bottomrule
+\end{tabular}\end{center}
+MultiRoom uses separately selected banks for the two students. The rates
+reflect the states each student visits, as well as the bank's conditions.

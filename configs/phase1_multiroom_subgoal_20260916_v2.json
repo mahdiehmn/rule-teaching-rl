@@ -1,0 +1,27 @@
+{
+  "author": "mahdiehmn",
+  "date": "2026-09-16",
+  "study_id": "phase1_multiroom_subgoal_20260916_v2",
+  "base_config": "configs/phase1_multiroom_native_20260916_v1.json",
+  "source_commit": "HEAD_AT_PREPARATION",
+  "control_batch": "results/efficiency/phase1_matched_20260914_v1",
+  "control_manifest_sha256": "1c00fa16341fc17ffbf129cd871254333706f383fd7a967a0cce16b2a1abdcda",
+  "control_source_commit": "acedefaec57ae145da352cda112a06775d43600e",
+  "task": "multiroom_n6",
+  "seeds": [7000000, 7000100, 7000200, 7000300, 7000400],
+  "control_initial_policy_sha256": {
+    "7000000": "a6b001ed70375ca6f4684b11d476f5e638ef45d7f21180f17e5a8bfd2fda28aa",
+    "7000100": "6cae231bc4d31c2db969131c807e52a0c14fc337a3dc5c2848f262375201207f",
+    "7000200": "38390def3e3ba58713cabf4f9ab075a4159d3ef9cb09d29d9fc357aa532f1884",
+    "7000300": "8028a23245849c6c15e08d57aeae808144c85bbe77ca6383e7a448bbeaa48b65",
+    "7000400": "a000bddcb30aa897fc667e2ad9ba6afcd4d23b95d1928e38202a36402e51d793"
+  },
+  "teacher": "llm_subgoal",
+  "teacher_model": "gpt-5-mini",
+  "advisor": "unlimited",
+  "action_label_budget": 1336,
+  "teacher_alone_mean_steps": 48.7,
+  "doorkey_reference_mean_steps": 17.5,
+  "calibrated_teacher_trajectories": 27.428571428571427,
+  "status": "exploratory positive-control transfer; controls reused"
+}

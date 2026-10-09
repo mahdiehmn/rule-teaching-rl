@@ -1,0 +1,10 @@
+{
+  "recorded_on": "2026-09-10",
+  "provenance": "Official OpenAI model documentation opened 2026-09-10: https://developers.openai.com/api/docs/models/gpt-5-mini and https://developers.openai.com/api/docs/models/text-embedding-3-small . Standard input/output rates per million tokens; no cached-input or Batch discount assumed. Other models deliberately omitted.",
+  "models": {
+    "gpt-5-mini": {"input_per_million": 0.25, "output_per_million": 2.0}
+  },
+  "embeddings": {
+    "text-embedding-3-small": {"per_million": 0.02}
+  }
+}

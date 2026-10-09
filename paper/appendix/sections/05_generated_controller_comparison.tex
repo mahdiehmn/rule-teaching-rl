@@ -1,0 +1,212 @@
+\section{Generated-Controller Comparison}\label{generated-controller-comparison}
+
+We adapt RLingua's teaching procedure to recurrent PPO and discrete actions,
+rather than reproduce its original TD3 experiments. A's generated controller
+reads full simulator state. B's controller reads local observations and its
+memory; its writer additionally receives 36 fresh full-map example situations
+paired with the student's view. These supply the same type of privileged
+example information as our bank construction, not identical example layouts
+or an otherwise identical generation process. B0 denotes the original
+local-observation controller without that example message. Throughout the
+main paper, B means the version with examples.
+
+The controller acts with probability $0.25\,0.999999^n$ after $n$ transitions.
+Its transitions supply replayed cross-entropy targets at weight 1.0. Student
+policy/value losses exclude controller transitions and advantage traces stop
+at them. Our bank labels student-visited states with a weight starting at
+0.1, decreasing to 0.001 and removed at 75\% of training. Bank construction
+and controller generation produce different artifacts; replay, intervention
+and imitation schedules differ. KeyCorridor's bank executor also has an
+explicit progress predicate. The comparison is between teaching procedures,
+not an exact match isolating representation, abstention, or runtime information.
+
+\subsection{Completed student comparisons}
+The completed B suites are \texttt{dk\_rlex}, \texttt{mr\_rlex} and
+\texttt{kc\_rlex}: ten paired seeds per student and task, 60 runs in total.
+All reach 4,999,168 transitions. Each has 26 regular checkpoints, beginning
+at 204,800; AUC is integrated on this common support. B and B0 training
+arguments differ only in controller identity and experiment name. We verified
+manifest identities, critical source/controller hashes, terminal summaries,
+initial-policy hashes, seed pairing and teacher-free evaluation logs.
+Paired-$t$ and Holm calculations were cross-checked against the frozen
+producer functions. These completed values supersede the earlier partial
+AUC read-outs.
+
+
+\begin{table}[htbp]\centering\small
+
+\caption{Mean greedy success AUC of completed students, ten paired training seeds per setting. No advice, our bank, full-state A, example-supplied B and original B0. Greedy AUC is the primary inferential metric.}
+
+\label{tab:minigrid_teaching}
+
+\begin{tabular}{@{}llrrrrr@{}}\toprule
+
+Task & Student & No advice & Ours & A & B & B0\\\midrule
+
+DoorKey-8x8 & PPO & 0.000 & 0.939 & 0.958 & 0.994 & 0.800\\
+
+DoorKey-8x8 & Count-PPO & 0.569 & 0.992 & 1.000 & 1.000 & 0.977\\
+
+MultiRoom-N6 & PPO & 0.000 & 0.767 & 0.815 & 0.002 & 0.000\\
+
+MultiRoom-N6 & Count-PPO & 0.746 & 0.988 & 0.979 & 0.710 & 0.634\\
+
+KeyCorridor-S3R3 & PPO & 0.000 & 0.733 & 0.935 & 0.594 & 0.587\\
+
+KeyCorridor-S3R3 & Count-PPO & 0.956 & 0.994 & 0.995 & 0.921 & 0.666\\
+
+\bottomrule\end{tabular}\end{table}
+
+\begin{table}[htbp]\centering\small
+
+\caption{Mean sampled success AUC of completed students, ten paired training seeds per setting. No advice, our bank, full-state A, example-supplied B and original B0. Sampled AUC is descriptive secondary evidence.}
+
+\label{tab:sampled_controllers}
+
+\begin{tabular}{@{}llrrrrr@{}}\toprule
+
+Task & Student & No advice & Ours & A & B & B0\\\midrule
+
+DoorKey-8x8 & PPO & 0.013 & 0.999 & 0.999 & 1.000 & 0.884\\
+
+DoorKey-8x8 & Count-PPO & 0.604 & 1.000 & 1.000 & 1.000 & 0.994\\
+
+MultiRoom-N6 & PPO & 0.000 & 0.976 & 0.914 & 0.002 & 0.000\\
+
+MultiRoom-N6 & Count-PPO & 0.747 & 0.993 & 0.977 & 0.703 & 0.653\\
+
+KeyCorridor-S3R3 & PPO & 0.000 & 0.819 & 0.997 & 0.683 & 0.698\\
+
+KeyCorridor-S3R3 & Count-PPO & 0.962 & 0.999 & 1.000 & 0.964 & 0.693\\
+
+\bottomrule\end{tabular}\end{table}
+
+
+
+Each contrast family below has six comparisons. Intervals are unadjusted
+paired-$t$ 95\% intervals; $p_H$ denotes the two-sided Holm-adjusted
+$p$-value within that family. AUC differences are paired by training seed
+and verified initial policy. The B families were specified in protocol
+addendum 17 before its learning runs. The A/B0 families are addendum 16.
+
+
+\begin{table}[htbp]\centering\small
+
+\caption{Our bank minus B (with examples): completed greedy-AUC contrasts.}
+
+\begin{tabular}{@{}llrrlr@{}}\toprule
+
+Task & Student & $\Delta$AUC & Positive pairs & 95\% CI & $p_H$\\\midrule
+
+DoorKey-8x8 & PPO & -0.055 & 1/10 & [-0.077, -0.032] & 0.00116\\
+
+DoorKey-8x8 & Count-PPO & -0.008 & 0/10 & [-0.011, -0.004] & 0.00116\\
+
+MultiRoom-N6 & PPO & +0.765 & 10/10 & [+0.702, +0.828] & 3.12e-09\\
+
+MultiRoom-N6 & Count-PPO & +0.278 & 10/10 & [+0.189, +0.366] & 0.000222\\
+
+KeyCorridor-S3R3 & PPO & +0.140 & 8/10 & [-0.025, +0.304] & 0.0877\\
+
+KeyCorridor-S3R3 & Count-PPO & +0.073 & 10/10 & [+0.052, +0.095] & 0.000134\\
+
+\bottomrule\end{tabular}\end{table}
+
+\begin{table}[htbp]\centering\small
+
+\caption{Our bank minus A (full state): completed greedy-AUC contrasts.}
+
+\begin{tabular}{@{}llrrlr@{}}\toprule
+
+Task & Student & $\Delta$AUC & Positive pairs & 95\% CI & $p_H$\\\midrule
+
+DoorKey-8x8 & PPO & -0.020 & 1/10 & [-0.038, -0.001] & 0.127\\
+
+DoorKey-8x8 & Count-PPO & -0.007 & 0/10 & [-0.011, -0.004] & 0.00412\\
+
+MultiRoom-N6 & PPO & -0.048 & 3/10 & [-0.104, +0.007] & 0.162\\
+
+MultiRoom-N6 & Count-PPO & +0.009 & 8/10 & [+0.004, +0.014] & 0.0157\\
+
+KeyCorridor-S3R3 & PPO & -0.202 & 0/10 & [-0.298, -0.106] & 0.00524\\
+
+KeyCorridor-S3R3 & Count-PPO & -0.000 & 6/10 & [-0.003, +0.003] & 0.942\\
+
+\bottomrule\end{tabular}\end{table}
+
+\begin{table}[htbp]\centering\small
+
+\caption{B with examples minus original B0: completed greedy-AUC contrasts.}
+
+\begin{tabular}{@{}llrrlr@{}}\toprule
+
+Task & Student & $\Delta$AUC & Positive pairs & 95\% CI & $p_H$\\\midrule
+
+DoorKey-8x8 & PPO & +0.194 & 10/10 & [+0.095, +0.293] & 0.00976\\
+
+DoorKey-8x8 & Count-PPO & +0.023 & 10/10 & [+0.006, +0.040] & 0.0592\\
+
+MultiRoom-N6 & PPO & +0.002 & 2/10 & [-0.002, +0.006] & 0.827\\
+
+MultiRoom-N6 & Count-PPO & +0.077 & 5/10 & [-0.120, +0.274] & 0.827\\
+
+KeyCorridor-S3R3 & PPO & +0.007 & 4/10 & [-0.106, +0.119] & 0.897\\
+
+KeyCorridor-S3R3 & Count-PPO & +0.256 & 10/10 & [+0.106, +0.405] & 0.0192\\
+
+\bottomrule\end{tabular}\end{table}
+
+\begin{table}[htbp]\centering\small
+
+\caption{Our bank minus original B0: completed greedy-AUC contrasts.}
+
+\begin{tabular}{@{}llrrlr@{}}\toprule
+
+Task & Student & $\Delta$AUC & Positive pairs & 95\% CI & $p_H$\\\midrule
+
+DoorKey-8x8 & PPO & +0.139 & 10/10 & [+0.031, +0.247] & 0.0513\\
+
+DoorKey-8x8 & Count-PPO & +0.015 & 7/10 & [-0.001, +0.032] & 0.128\\
+
+MultiRoom-N6 & PPO & +0.767 & 10/10 & [+0.705, +0.829] & 2.69e-09\\
+
+MultiRoom-N6 & Count-PPO & +0.354 & 10/10 & [+0.175, +0.534] & 0.00621\\
+
+KeyCorridor-S3R3 & PPO & +0.146 & 8/10 & [-0.040, +0.332] & 0.128\\
+
+KeyCorridor-S3R3 & Count-PPO & +0.329 & 10/10 & [+0.176, +0.481] & 0.00434\\
+
+\bottomrule\end{tabular}\end{table}
+
+\subsection{Interpretation and original-controller evidence}
+Our advantage over B is supported on MultiRoom with both students and
+KeyCorridor Count-PPO. B's DoorKey advantage is also significant; the
+KeyCorridor PPO difference remains inconclusive. The Count-PPO differences
+from A are below 0.01 in magnitude, without establishing equivalence.
+A is significantly better for KeyCorridor PPO. These patterns support
+conditional teaching as an effective design without a universal ranking.
+
+In standalone controller evaluations on 100 layouts, B solves all DoorKey
+layouts and none on MultiRoom or KeyCorridor. This establishes the quality
+of these generated candidates, not an impossibility for local-observation
+controllers. A local controller with memory can integrate information over
+ time. No experiment isolates observation overlap as the cause of the
+DoorKey result. We retain B0 to show what changes when example situations
+are added to the writer's context.
+
+
+
+\subsection{Executing actions from our own bank}
+The separate same-bank execution variant retains imitation while sometimes
+executing the rule target. Label-only teaching meets the declared 0.05 AUC
+non-inferiority margin in five of six settings. For KeyCorridor PPO,
+execution has a higher mean (0.896 versus 0.733), but the corrected contrast
+is inconclusive ($p=0.126$). This variant uses student-policy probabilities
+for mixed-policy actions in PPO, a known formulation limitation. It is
+distinct from the controller adaptation above. Supplement Section 10 gives
+both greedy and sampled curves and the execution schedule.
+
+
+The main paper presents the sampled learning curves once. The tables here
+report greedy and sampled AUC separately, including B0, without repeating
+the controller figure.

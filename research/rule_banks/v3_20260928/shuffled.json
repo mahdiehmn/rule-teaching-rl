@@ -1,0 +1,297 @@
+{
+ "cost": {
+  "consult": {
+   "calls": 36,
+   "completed": 36,
+   "dollars": 0.063001
+  },
+  "scope_check": {
+   "calls": 26,
+   "completed": 26,
+   "dollars": 0.05964825
+  }
+ },
+ "mode": "scoped",
+ "model": "gpt-5-mini-2025-08-07",
+ "rules": [
+  {
+   "action": 2,
+   "condition": {
+    "carrying": "nothing",
+    "front": "empty",
+    "key_ahead": "ahead",
+    "key_visible": "yes"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 5,
+   "condition": {
+    "carrying": "key",
+    "door_ahead": "ahead",
+    "door_state": "locked",
+    "door_visible": "yes",
+    "front": "door_locked"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 1,
+   "condition": {
+    "carrying": "key",
+    "front": "goal"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 1,
+   "condition": {
+    "carrying": "key",
+    "front": "empty"
+   },
+   "exceptions": [
+    [
+     "door_state",
+     "locked"
+    ],
+    [
+     "door_state",
+     "closed"
+    ]
+   ]
+  },
+  {
+   "action": 1,
+   "condition": {
+    "carrying": "key",
+    "front": "empty"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 3,
+   "condition": {
+    "carrying": "nothing",
+    "front": "key"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 5,
+   "condition": {
+    "carrying": "key",
+    "door_ahead": "ahead",
+    "door_fwd": "1",
+    "door_right": "0",
+    "door_side": "center",
+    "door_state": "locked",
+    "door_visible": "yes",
+    "front": "door_locked"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 5,
+   "condition": {
+    "carrying": "key",
+    "front": "wall"
+   },
+   "exceptions": [
+    [
+     "goal_visible",
+     "yes"
+    ],
+    [
+     "door_visible",
+     "yes"
+    ]
+   ]
+  },
+  {
+   "action": 5,
+   "condition": {
+    "carrying": "key",
+    "door_state": "locked",
+    "front": "door_locked"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "carrying": "nothing",
+    "front": "key"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "carrying": "key",
+    "door_visible": "no",
+    "front": "empty",
+    "goal_visible": "no",
+    "key_visible": "no"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "carrying": "nothing",
+    "door_visible": "no",
+    "front": "wall",
+    "goal_visible": "no",
+    "key_visible": "no"
+   },
+   "exceptions": [
+    [
+     "carrying",
+     "key"
+    ],
+    [
+     "door_visible",
+     "yes"
+    ]
+   ]
+  },
+  {
+   "action": 1,
+   "condition": {
+    "door_ahead": "beside",
+    "door_fwd": "0",
+    "door_right": "1",
+    "door_side": "right",
+    "door_visible": "yes",
+    "front": "wall"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "front": "empty",
+    "key_ahead": "ahead",
+    "key_visible": "yes"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "carrying": "key",
+    "door_state": "locked",
+    "front": "door_locked"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "carrying": "nothing",
+    "front": "empty",
+    "key_ahead": "ahead",
+    "key_side": "right",
+    "key_visible": "yes"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "door_ahead": "ahead",
+    "door_visible": "yes",
+    "front": "empty"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "carrying": "nothing",
+    "front": "empty",
+    "key_ahead": "ahead",
+    "key_side": "left",
+    "key_visible": "yes"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "carrying": "key",
+    "door_ahead": "ahead",
+    "door_state": "locked",
+    "door_visible": "yes",
+    "front": "door_locked"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "front": "wall",
+    "goal_side": "right",
+    "goal_visible": "yes"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 3,
+   "condition": {
+    "carrying": "nothing",
+    "front": "key"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 2,
+   "condition": {
+    "carrying": "key",
+    "door_state": "locked",
+    "front": "door_locked"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 5,
+   "condition": {
+    "front": "empty"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 5,
+   "condition": {
+    "carrying": "nothing",
+    "front": "key"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 3,
+   "condition": {
+    "carrying": "key",
+    "front": "empty"
+   },
+   "exceptions": []
+  },
+  {
+   "action": 3,
+   "condition": {
+    "goal_ahead": "ahead",
+    "goal_visible": "yes"
+   },
+   "exceptions": []
+  }
+ ],
+ "scope_check_status": {
+  "refined": 24,
+  "withdrawn": 2
+ },
+ "source_replies_sha256": {
+  "consult": "8b161df3db6fe78e125d7dc3aec19e7c18bfacdfa35059dbc65b1356b61d6283",
+  "refine": "2b8d7f1394496d260ca5b460fd8837aeaf73c26496bbeae6e5fbea8d8fe71e18"
+ },
+ "study": "rule_bank_pilot_20260928_v1"
+}
