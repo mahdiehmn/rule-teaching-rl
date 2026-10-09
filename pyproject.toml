@@ -9,6 +9,7 @@ description = 'A hard-exploration MiniGrid/BabyAI benchmark for comparing tabula
 readme = 'README.md'
 requires-python = '>=3.11'
 authors = [{ name = 'mahdiehmn' }]
+license = { text = 'MIT' }
 
 # Runtime dependencies. Kept deliberately small: a cleanrl-style
 # single-file training loop only needs gymnasium + torch, the env

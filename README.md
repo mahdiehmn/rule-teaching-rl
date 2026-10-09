@@ -77,6 +77,11 @@ API access.
 Results, run directories and API journals are written to `results/`, which
 is not tracked.
 
+## License
+
+MIT; see `LICENSE`. MiniGrid, Crafter and the other dependencies keep their
+own licenses.
+
 ## Citation
 
 If you use this code, please cite the accompanying paper (citation to be added).
